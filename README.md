@@ -59,3 +59,5 @@ We welcome all contributions, please read our [CONTRIBUTING.MD](https://github.c
 
 [image-1]:	https://img.shields.io/npm/v/@umijs/hooks.svg?style=flat
 [image-2]:	https://img.shields.io/npm/dm/@umijs/hooks.svg?style=flat
+
+> git remote add upstream git@github.com:umijs/hooks.git
