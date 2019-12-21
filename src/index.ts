@@ -1,4 +1,4 @@
-import useAntdTable from './useAntdTable';
+import useAntdTable, { activeCache } from './useAntdTable';
 import useAPI, { configRequest } from './useAPI';
 import useAsync from './useAsync';
 import useLoadMore from './useLoadMore';
@@ -29,7 +29,7 @@ import useFullscreen from './useFullscreen';
 import useInViewport from './useInViewport';
 import useKeyPress from './useKeyPress';
 
-const useControlledValue: typeof useControllableValue = function (...args) {
+const useControlledValue: typeof useControllableValue = function(...args) {
   console.warn(
     'useControlledValue is deprecated and will be removed in the next major version. Please use useControllableValue instead.',
   );
@@ -38,6 +38,7 @@ const useControlledValue: typeof useControllableValue = function (...args) {
 
 export {
   useAntdTable,
+  activeCache,
   useAPI,
   useAsync,
   useLoadMore,

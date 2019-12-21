@@ -37,7 +37,7 @@ import Demo5CodeJsx from '!raw-loader!./demo/demo5.jsx';
 * 表格分页处理
 * 搜索表单与表格联动
 * 支持简单、复杂 2 种搜索模式切换，并且在切换模式时，能自动填充上一次的数据
-* 支持数据缓存，组件销毁重建时能自动还原上一次的表单数据，分页状态等
+* 支持数据缓存，浏览器刷新、从其他页面切换到该页面、组件销毁重建时能自动还原上一次的表单数据，分页状态等
 
 ## 代码演示
 
@@ -145,17 +145,28 @@ interface ReturnValue<Item> {
 | 参数            | 说明                                                                         | 类型   | 默认值 |
 |-----------------|------------------------------------------------------------------------------|--------|--------|
 | defaultPageSize | 默认的每页数据量                                                             | number | 10     |
-| id              | 表格唯一 id，如果有 id，则会自动缓存并恢复数据                               | string | -      |
+| id              | 表格唯一 id，如果有 id，则会自动缓存并恢复数据,建议使用pathname(根据情况再带上页面唯一key)                               | string | -      |
 | form            | antd form 实例，如果有 form 实例，则 asyncFn 会收到 form 数据                | -      | -      |
 | formatResult    | 对 asyncFn 返回数据进行格式化，如果 asyncFn 返回数据符合要求，则不需要该参数 | -      | -      |
 
+## 还原搜索条件、页码等
+
+从其他页面跳转到本页面，如果需要还原之前的搜索状态 
+
+```
+ import {activeCache} from '@wt/useAntdTable';
+  // 将缓存标记为激活状态
+  activeCache('/sales/order')
+  // 跳转到该页面
+  // router.push('/sales/order')
+```
 
 ## 备注
 
 在日常工作中，我们每个网站的 Pagination 配置，接口返回数据结构都是一致的，如果我们在每次使用 `useAntdTable` 时都单独处理 Pagination 和 formatResult 肯定是不优雅的，所以我们建议您在自己的项目中基于 `useAntdTable` 再封装一次，例如下面的示例：
 
 ```javascript
-import { useAntdTable } from '@umijs/hooks'
+import { useAntdTable } from '@wt/hooks'
 
 export default (fn, deps = [], options = {}) => {
   const result = useAntdTable(fn, deps, {

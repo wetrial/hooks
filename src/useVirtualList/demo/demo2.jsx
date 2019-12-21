@@ -48,7 +48,7 @@ export default () => {
         }}
       >
         <div {...wrapperProps}>
-          {list.map((ele, index) => (
+          {list.map(ele => (
             <div
               style={{
                 height: ele.index % 2 === 0 ? 42 : 84,

@@ -93,7 +93,7 @@ describe('useAsync', () => {
     hook = renderHook(({ func, deps, opt }) => useAsync(func, deps, opt), {
       initialProps: {
         func: (req: number) => request(req),
-        deps: [] as ReadonlyArray<{}>,
+        deps: [] as readonly {}[],
         opt: {
           manual: true,
           onSuccess: successCallback,
@@ -138,7 +138,7 @@ describe('useAsync', () => {
             callback();
             return request(req);
           },
-          deps: [] as ReadonlyArray<{}>,
+          deps: [] as readonly {}[],
           opt: {
             manual: true,
             pollingInterval: 3000,
@@ -190,7 +190,7 @@ describe('useAsync', () => {
           callback();
           return request(req);
         },
-        deps: [] as ReadonlyArray<{}>,
+        deps: [] as readonly {}[],
         opt: {
           pollingInterval: 3000,
         } as Options<{}>,
@@ -232,7 +232,7 @@ describe('useAsync', () => {
     hook = renderHook(({ func, deps, opt }) => useAsync(func, deps, opt), {
       initialProps: {
         func: (req: number) => request(req),
-        deps: [] as ReadonlyArray<{}>,
+        deps: [] as readonly {}[],
         opt: {
           onSuccess: () => {
             if (counter === 1) {
@@ -255,7 +255,7 @@ describe('useAsync', () => {
     expect(hook.result.current.data).toEqual('success');
 
     act(() => {
-      hook.result.current.run(1).then(res => callback());
+      hook.result.current.run(1).then(() => callback());
     });
     // hook already unmount
     expect(callback).not.toHaveBeenCalled();

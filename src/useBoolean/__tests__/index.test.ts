@@ -1,11 +1,11 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import useBoolean from '../index';
 
-const callToggle = (hook: any) => {
-  act(() => {
-    hook.result.current.toggle();
-  });
-};
+// const callToggle = (hook: any) => {
+//   act(() => {
+//     hook.result.current.toggle();
+//   });
+// };
 
 describe('useBoolean', () => {
   it('should be defined', () => {

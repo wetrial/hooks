@@ -1,4 +1,4 @@
-import { DependencyList, useState, useMemo, useRef, useCallback } from 'react';
+import { DependencyList, useState, useMemo, useCallback } from 'react';
 import useUpdateEffect from '../useUpdateEffect';
 import useDebounceFn from '../useDebounceFn';
 
@@ -31,7 +31,9 @@ function useSearch<Result>(
   deps?: DependencyList | Options,
   options?: Options,
 ): ReturnValue<Result> {
+  // eslint-disable-next-line no-underscore-dangle
   const _deps: DependencyList = (Array.isArray(deps) ? deps : []) as DependencyList;
+  // eslint-disable-next-line no-underscore-dangle
   const _options: Options = (typeof deps === 'object' && !Array.isArray(deps)
     ? deps
     : options || {}) as Options;

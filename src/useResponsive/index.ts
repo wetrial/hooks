@@ -29,6 +29,7 @@ function init() {
     const oldInfo = info;
     calculate();
     if (oldInfo === info) return;
+    // eslint-disable-next-line no-restricted-syntax
     for (const subscriber of subscribers) {
       subscriber();
     }
@@ -39,6 +40,7 @@ function calculate() {
   const width = window.innerWidth;
   const newInfo = {} as ResponsiveInfo;
   let shouldUpdate = false;
+  // eslint-disable-next-line no-restricted-syntax
   for (const key of Object.keys(responsiveConfig)) {
     newInfo[key] = width >= responsiveConfig[key];
     if (newInfo[key] !== info[key]) {

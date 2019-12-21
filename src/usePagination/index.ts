@@ -49,7 +49,9 @@ function usePagination<Result, Item>(
   deps?: DependencyList | Options<Result, Item>,
   options?: Options<Result, Item>,
 ): ReturnValue<Item> {
+  // eslint-disable-next-line no-underscore-dangle
   const _deps: DependencyList = (Array.isArray(deps) ? deps : []) as DependencyList;
+  // eslint-disable-next-line no-underscore-dangle
   const _options: Options<Result, Item> = (typeof deps === 'object' && !Array.isArray(deps)
     ? deps
     : options || {}) as Options<Result, Item>;

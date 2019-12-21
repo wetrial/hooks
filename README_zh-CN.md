@@ -1,6 +1,6 @@
 [English](./README.md) | 简体中文
 
-# @umijs/hooks
+# @wt/hooks
 
 React Hooks Library.
 
@@ -27,19 +27,19 @@ React Hooks Library.
 ## 📦 安装
 
 ```
-npm i @umijs/hooks --save
+npm i @wt/hooks --save
 ```
 
 ## 🔨使用
 
 ```
-import { useAsync } from '@umijs/hooks';
+import { useAsync } from '@wt/hooks';
 ```
 
 ## 🖥 开发
 
 ```
-$ git clone git@github.com:umijs/hooks.git
+$ git clone git@github.com:wt/hooks.git
 $ cd hooks
 $ npm install
 $ npm start
@@ -48,14 +48,14 @@ $ npm start
 
 ## 🤝 贡献
 
-我们欢迎所有人参与共建，请参考[CONTRIBUTING.MD](https://github.com/umijs/hooks/blob/master/CONTRIBUTING.MD)
+我们欢迎所有人参与共建，请参考[CONTRIBUTING.MD](https://github.com/wt/hooks/blob/master/CONTRIBUTING.MD)
 
 ## ✅ License
 
 [MIT](https://github.com/umijs/umi/blob/master/LICENSE)
 
-[1]:	https://www.npmjs.com/package/@umijs/hooks
-[2]:	https://npmjs.org/package/@umijs/hooks
+[1]:	https://www.npmjs.com/package/@wt/hooks
+[2]:	https://npmjs.org/package/@wt/hooks
 
-[image-1]:	https://img.shields.io/npm/v/@umijs/hooks.svg?style=flat
-[image-2]:	https://img.shields.io/npm/dm/@umijs/hooks.svg?style=flat
+[image-1]:	https://img.shields.io/npm/v/@wt/hooks.svg?style=flat
+[image-2]:	https://img.shields.io/npm/dm/@wt/hooks.svg?style=flat

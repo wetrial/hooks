@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, List } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import useDynamicList from '..';
 
@@ -41,7 +41,7 @@ const Card = (props: CardProps) => {
 
 interface ListItem {
   name: string;
-  list: Array<{ name: string; value: number }>;
+  list: { name: string; value: number }[];
 }
 
 export default Form.create()((props: FormComponentProps) => {

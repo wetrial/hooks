@@ -12,6 +12,7 @@ import {
 } from 'react';
 import useAsync from '../useAsync';
 import useUpdateEffect from '../useUpdateEffect';
+import useSessionStorageState from '../useSessionStorageState';
 
 const isEqual = require('lodash.isequal');
 
@@ -84,6 +85,10 @@ export interface FnParams<Item> {
   [key: string]: any;
 }
 
+export interface IKeyValue {
+  [key: string]: any;
+}
+
 interface FormData {
   [key: string]: any;
 }
@@ -118,9 +123,6 @@ class UseTableInitState<Item> {
   sorter: SorterResult<Item> = {} as SorterResult<Item>;
 }
 
-// 缓存
-const cacheData: { [key: string]: any } = {};
-
 const reducer = <Item>(state: UseTableInitState<Item>, action: { type: string; payload?: {} }) => {
   switch (action.type) {
     case 'updateState':
@@ -144,7 +146,9 @@ function useAntdTable<Result, Item>(
   deps?: DependencyList | Options<Result, Item>,
   options?: Options<Result, Item>,
 ): ReturnValue<Item> {
+  // eslint-disable-next-line no-underscore-dangle
   const _deps: DependencyList = (Array.isArray(deps) ? deps : []) as DependencyList;
+  // eslint-disable-next-line no-underscore-dangle
   const _options: Options<Result, Item> = (typeof deps === 'object' && !Array.isArray(deps)
     ? deps
     : options || {}) as Options<Result, Item>;
@@ -183,39 +187,7 @@ function useAntdTable<Result, Item>(
     });
   }, [state.count]);
 
-  /* 初始化执行 */
-  useEffect(() => {
-    /* 有缓存，恢复 */
-    if (id && cacheData[id]) {
-      const cache = cacheData[id];
-      /* 修改完 formData 和 searchType 之后，会触发 useUpdateEffect，给当前表单赋值 */
-      dispatch({
-        type: 'updateState',
-        payload: {
-          current: cache.current,
-          pageSize: cache.pageSize,
-          searchType: cache.searchType,
-          activeFormData: cache.activeFormData,
-          formData: cache.formData,
-          filters: cache.filters,
-          sorter: cache.sorter,
-          count: state.count + 1,
-        },
-      });
-    } else if (form) {
-      /* 如果有 form，需要走 searchSubmit，为了初始化的时候，拿到 initialValue */
-      searchSubmit();
-    } else {
-      refresh();
-    }
-
-    if (id) {
-      return () => {
-        cacheData[id] = stateRef.current;
-      };
-    }
-    return () => {};
-  }, []);
+  const [cache, setCache] = useSessionStorageState<IKeyValue>(`__paged__${id}`);
 
   /* deps 变化后，重置表格 */
   useUpdateEffect(() => {
@@ -243,6 +215,12 @@ function useAntdTable<Result, Item>(
     if (state.sorter) {
       params.sorter = state.sorter;
     }
+
+    // 记录请求数据的缓存
+    if (id) {
+      setCache(stateRef.current);
+    }
+
     run(params).then(res => {
       const payload = formatResult ? formatResult(res) : res;
       dispatch({
@@ -317,7 +295,6 @@ function useAntdTable<Result, Item>(
     form.resetFields();
     // 重置表单后，拿到当前默认值
     const activeFormData = getCurrentFieldsValues();
-
     dispatch({
       type: 'updateState',
       payload: {
@@ -412,7 +389,62 @@ function useAntdTable<Result, Item>(
     };
   }
 
+  /* 初始化执行 */
+  useEffect(() => {
+    /* 有缓存，恢复 */
+    const isRefresh =
+      window.performance &&
+      window.performance.navigation &&
+      (PerformanceNavigation.TYPE_RELOAD === window.performance.navigation.type ||
+        PerformanceNavigation.TYPE_BACK_FORWARD === window.performance.navigation.type);
+    if (id && cache && (cache.active || isRefresh)) {
+      /* 修改完 formData 和 searchType 之后，会触发 useUpdateEffect，给当前表单赋值 */
+      dispatch({
+        type: 'updateState',
+        payload: {
+          current: cache.current,
+          pageSize: cache.pageSize,
+          searchType: cache.searchType,
+          activeFormData: cache.activeFormData,
+          formData: cache.formData,
+          filters: cache.filters,
+          sorter: cache.sorter,
+          count: state.count + 1,
+        },
+      });
+    } else if (form) {
+      /* 如果有 form，需要走 searchSubmit，为了初始化的时候，拿到 initialValue */
+
+      searchSubmit();
+    } else {
+      refresh();
+    }
+  }, []);
+
   return result;
 }
 
 export default useAntdTable;
+
+/**
+ * 激活缓存
+ * @param key 页面缓存的key
+ */
+export const activeCache = (key: string) => {
+  const cacheKey = `__paged__${key}`;
+  if (sessionStorage) {
+    const cache = sessionStorage.getItem(cacheKey);
+    if (cache !== null) {
+      const cacheData = JSON.parse(cache);
+      cacheData.active = true;
+      sessionStorage.setItem(cacheKey, JSON.stringify(cacheData));
+    }
+  }
+  // debugger
+  // const [cache, setCache] = useSessionStorageState<IKeyValue>(cacheKey);
+  // debugger
+  // if (cache) {
+  //   cache.active = true;
+  //   setCache(cache);
+  // }
+};

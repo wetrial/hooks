@@ -1,5 +1,4 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useCallback } from 'react';
 import useControllableValue, { Options, Props } from '../index';
 
 describe('useControllableValue', () => {
@@ -7,7 +6,7 @@ describe('useControllableValue', () => {
     expect(useControllableValue).toBeDefined();
   });
 
-  const setUp = (props?: Props, options?: Options): any =>
+  const setUp = (props?: Props, options?: Options<any>): any =>
     renderHook(() => useControllableValue(props, options));
 
   it('defaultValue should work', () => {

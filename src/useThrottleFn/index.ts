@@ -19,7 +19,9 @@ function useThrottleFn<T extends any[]>(
   deps: DependencyList | number,
   wait?: number,
 ): ReturnValue<T> {
+  // eslint-disable-next-line no-underscore-dangle
   const _deps: DependencyList = (Array.isArray(deps) ? deps : []) as DependencyList;
+  // eslint-disable-next-line no-underscore-dangle
   const _wait: number = typeof deps === 'number' ? deps : wait || 0;
   const timer = useRef<any>();
 

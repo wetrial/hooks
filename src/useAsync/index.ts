@@ -81,7 +81,9 @@ function useAsync<Result = any>(
   deps?: DependencyList | Options<Result>,
   options?: Options<Result>,
 ): ReturnValue<Result> {
+  // eslint-disable-next-line no-underscore-dangle
   const _deps: DependencyList = (Array.isArray(deps) ? deps : []) as DependencyList;
+  // eslint-disable-next-line no-underscore-dangle
   const _options: Options<Result> = (typeof deps === 'object' && !Array.isArray(deps)
     ? deps
     : options || {}) as Options<Result>;

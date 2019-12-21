@@ -1,4 +1,4 @@
-import { Input, Button } from 'antd';
+import { Input } from 'antd';
 import React, { useState } from 'react';
 import useControllableValue from '..';
 

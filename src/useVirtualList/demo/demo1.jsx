@@ -16,7 +16,7 @@ export default () => {
         }}
       >
         <div {...wrapperProps}>
-          {list.map((ele, index) => (
+          {list.map(ele => (
             <div
               style={{
                 height: 52,

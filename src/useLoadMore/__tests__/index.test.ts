@@ -160,7 +160,7 @@ describe('useLoadMore', () => {
         deps: [],
         options: {
           initPageSize: 4,
-          itemKey: (item: any, index: any) => undefined,
+          itemKey: () => undefined,
         },
       });
 
@@ -238,8 +238,8 @@ describe('useLoadMore', () => {
         options: {
           initPageSize: 6,
           threshold: 200,
-          itemKey: (item: any, index: any) => 'id',
-          formatResult: (res: any) => ({
+          itemKey: () => 'id',
+          formatResult: () => ({
             total: 0,
             data: result,
           }),
@@ -258,8 +258,8 @@ describe('useLoadMore', () => {
           initPageSize: -1,
           incrementSize: -1,
           threshold: 200,
-          itemKey: (item: any, index: any) => 'id',
-          formatResult: (res: any) => ({
+          itemKey: () => 'id',
+          formatResult: () => ({
             total: 0,
             data: result,
           }),

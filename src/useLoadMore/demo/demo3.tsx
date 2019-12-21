@@ -60,7 +60,7 @@ const dataSource = [
   },
 ];
 
-const asyncFn = ({ pageSize, offset, gender }: Params): Promise<Result> =>
+const asyncFn = ({ pageSize, offset }: Params): Promise<Result> =>
   new Promise(resolve => {
     setTimeout(() => {
       resolve({
@@ -118,7 +118,7 @@ export default () => {
                 <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
               }
               title={<a>{item.title}</a>}
-              description="umijs/hooks is a react hooks library"
+              description="wt/hooks is a react hooks library"
             />
           </List.Item>
         )}

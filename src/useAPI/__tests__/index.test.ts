@@ -6,7 +6,7 @@ describe('useAPI', () => {
     expect(useAPI).toBeDefined();
   });
 
-  let hook: any;
+  // let hook: any;
 
   // it('should fetch data', async () => {
   //   act(() => {

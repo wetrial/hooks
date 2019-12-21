@@ -6,6 +6,7 @@ export class EventEmitter<T> {
   private subscriptions = new Set<Subscription<T>>();
 
   emit = (val: T) => {
+    // eslint-disable-next-line no-restricted-syntax
     for (const subscription of this.subscriptions) {
       subscription(val);
     }

@@ -29,7 +29,18 @@
     "help": "father help",
     "precommit": "father pre-commit",
     "build:doc": "father doc build && LAN=zh-CN father doc build",
-    "pub:doc": "now --prod"
+    "pub:doc": "now --prod",
+    "patch": "yarn version --patch && git push origin master && git push origin --tags",
+    "minor": "yarn version --minor && git push origin master && git push origin --tags",
+    "major": "yarn version --major && git push origin master && git push origin --tags",
+    "lint": "yarn lint:js && yarn lint:style && yarn lint:prettier",
+    "lint-staged": "lint-staged",
+    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
+    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && yarn lint:style",
+    "lint:js": "eslint --debug --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./",
+    "lint:prettier": "check-prettier lint",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
+    "prettier": "prettier -c --write \"**/*\""
   },
   "files": [
     "dist",
@@ -40,10 +51,10 @@
     "package.json"
   ],
   "dependencies": {
-    "lodash.isequal": "^4.5.0",
-    "screenfull": "^5.0.0",
     "intersection-observer": "^0.7.0",
-    "resize-observer-polyfill": "^1.5.1"
+    "lodash.isequal": "^4.5.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "screenfull": "^5.0.0"
   },
   "peerDependencies": {
     "antd": "^3.20.1",
@@ -52,12 +63,14 @@
   "devDependencies": {
     "@testing-library/react-hooks": "^2.0.1",
     "@types/jest": "^24.0.15",
+    "@umijs/fabric": "^1.2.12",
     "antd": "^3.20.1",
     "babel-plugin-import": "^1.12.0",
     "del": "^5.1.0",
     "docz-theme-umi-hooks": "^0.0.7",
     "enzyme": "^3.10.0",
     "father": "^2.13.3",
+    "husky": "^3.1.0",
     "jackbox": "^0.2.0",
     "now": "^16.2.0",
     "raw-loader": "^3.1.0",
@@ -70,6 +83,20 @@
   },
   "engines": {
     "node": ">=8.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.less": "stylelint --syntax less",
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{js,jsx}": "npm run lint-staged:js",
+    "**/*.{js,ts,tsx}": "npm run lint-staged:js"
   },
   "license": "MIT"
 }

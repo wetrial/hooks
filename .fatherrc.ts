@@ -8,8 +8,8 @@ const zhConfig = {
   themeConfig: {
     codemirrorTheme: 'docz-light',
     menus: [
-      { title: '发布日志', link: 'https://github.com/umijs/hooks/releases' },
-      { title: 'Github', link: 'https://github.com/umijs/hooks' },
+      { title: '发布日志', link: 'https://github.com/wt/hooks/releases' },
+      { title: 'Github', link: 'https://github.com/wt/hooks' },
     ],
   },
 }
@@ -21,8 +21,8 @@ const enConfig = {
   themeConfig: {
     codemirrorTheme: 'docz-light',
     menus: [
-      { title: 'Changelog', link: 'https://github.com/umijs/hooks/releases' },
-      { title: 'Github', link: 'https://github.com/umijs/hooks' },
+      { title: 'Changelog', link: 'https://github.com/wt/hooks/releases' },
+      { title: 'Github', link: 'https://github.com/wt/hooks' },
     ],
   },
 }
@@ -45,8 +45,8 @@ const options: IBundleOptions = {
     prettier: true,
   },
   doc: {
-    title: '@umijs/hooks',
-    repository: 'https://github.com/umijs/hooks',
+    title: '@wt/hooks',
+    repository: 'https://github.com/wt/hooks',
     theme: 'docz-theme-umi-hooks',
     ignore: ['readme.md', 'changelog.md', 'readme_zh-CN.md', 'contributing.md', 'license.md', '__template__/*.mdx'],
     ...config,

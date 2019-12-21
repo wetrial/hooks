@@ -2,6 +2,6 @@
 import { useState } from 'react';
 
 export default () => {
-  const [ state, setState ] = useState('');
-  return [ state, setState ];
+  const [state, setState] = useState('');
+  return [state, setState];
 };

@@ -16,24 +16,24 @@ export default () => {
     setKey(event.key);
   });
 
-  useKeyPress(['shift.c'], event => {
+  useKeyPress(['shift.c'], () => {
     setState(1);
   });
 
-  useKeyPress(['meta'], event => {
+  useKeyPress(['meta'], () => {
     setState(2);
   });
 
-  useKeyPress('ctrl.alt.c', event => {
+  useKeyPress('ctrl.alt.c', () => {
     setState(3);
   });
 
-  useKeyPress('ctrl.alt.space', event => {
+  useKeyPress('ctrl.alt.space', () => {
     setState(4);
   });
 
   // Attention: event.key === '0'
-  useKeyPress('ctrl.alt.0', event => {
+  useKeyPress('ctrl.alt.0', () => {
     setState(5);
   });
 

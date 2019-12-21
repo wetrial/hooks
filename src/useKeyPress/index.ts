@@ -2,12 +2,12 @@ import { useEffect, useCallback, useRef, RefObject } from 'react';
 
 export type KeyPredicate = (event: KeyboardEvent) => boolean;
 export type keyType = KeyboardEvent['keyCode'] | KeyboardEvent['key'];
-export type KeyFilter = keyType | Array<keyType> | ((event: KeyboardEvent) => boolean);
+export type KeyFilter = keyType | keyType[] | ((event: KeyboardEvent) => boolean);
 export type EventHandler = (event: KeyboardEvent) => void;
 export type keyEvent = 'keydown' | 'keyup';
 export type RefType = HTMLElement | (() => HTMLElement | null);
 export type EventOption = {
-  events?: Array<keyEvent>;
+  events?: keyEvent[];
   target?: Window | RefType;
 };
 
@@ -76,6 +76,7 @@ function genFilterKey(event: any, keyFilter: any) {
   // 字符串依次判断是否有组合键
   const genArr = keyFilter.split('.');
   let genLen = 0;
+  // eslint-disable-next-line no-restricted-syntax
   for (const key of genArr) {
     // 组合键
     const genModifier = modifierKey[key];
@@ -125,7 +126,7 @@ function genKeyFormater(keyFilter: any): KeyPredicate {
   return keyFilter ? () => true : () => false;
 }
 
-const defaultEvents: Array<keyEvent> = ['keydown'];
+const defaultEvents: keyEvent[] = ['keydown'];
 
 function useKeyPress<T extends HTMLElement = HTMLInputElement>(
   keyFilter: KeyFilter,
@@ -150,10 +151,12 @@ function useKeyPress<T extends HTMLElement = HTMLInputElement>(
   useEffect(() => {
     const targetElement = typeof target === 'function' ? target() : target;
     const el = element.current || targetElement || window;
+    // eslint-disable-next-line no-restricted-syntax
     for (const eventName of events) {
       el.addEventListener(eventName, callbackHandler);
     }
     return () => {
+      // eslint-disable-next-line no-restricted-syntax
       for (const eventName of events) {
         el.removeEventListener(eventName, callbackHandler);
       }

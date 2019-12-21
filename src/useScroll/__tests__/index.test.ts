@@ -1,5 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
-import { useRef } from 'react';
+import { renderHook } from '@testing-library/react-hooks';
 import useScroll from '../index';
 
 describe('useScroll', () => {
