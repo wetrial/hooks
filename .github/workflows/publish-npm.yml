@@ -11,14 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-
-      # Publish to GitHub Package Registry
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-            - run: yarn install
-            - run: yarn build
-            - run: npm publish
-            env:
-             NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn install
+      - run: yarn build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
