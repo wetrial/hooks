@@ -276,7 +276,7 @@ describe('useAntdTable', () => {
     });
 
     if (hook.result.current.search) {
-      expect(hook.result.current.search.type).toEqual('advance');
+      expect(hook.result.current.search.type).toEqual('simple');
     }
     expect(hook.result.current.tableProps.pagination.current).toEqual(3);
     expect(form.fieldsValue.name).toEqual('change name 2');
