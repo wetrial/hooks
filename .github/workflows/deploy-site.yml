@@ -6,7 +6,7 @@ on:
     branches:
       - master
     tags:
-      - v*.*.*
+      - 'v*'
 
 jobs:
   build-and-deploy:
@@ -19,4 +19,4 @@ jobs:
         with:
           args: --prod
         env:
-          ZEIT_TOKEN: ${{ secrets.NPM_DEPLOY }}
+          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}

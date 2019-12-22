@@ -1,8 +1,11 @@
 name: Publish NPM
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - master
+    tags:
+      - 'v*'
 
 jobs:
   build:
