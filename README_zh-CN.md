@@ -48,7 +48,7 @@ $ npm start
 
 ## 🤝 贡献
 
-我们欢迎所有人参与共建，请参考[CONTRIBUTING.MD](https://github.com/wt/hooks/blob/master/CONTRIBUTING.MD)
+我们欢迎所有人参与共建，请参考[CONTRIBUTING.MD](https://github.com/wetrial/hooks/blob/master/CONTRIBUTING.MD)
 
 ## ✅ License
 
@@ -59,3 +59,6 @@ $ npm start
 
 [image-1]:	https://img.shields.io/npm/v/@wt/hooks.svg?style=flat
 [image-2]:	https://img.shields.io/npm/dm/@wt/hooks.svg?style=flat
+
+基于  https://github.com/umijs/hooks 改造
+> git remote add upstream git@github.com:wt/hooks.git

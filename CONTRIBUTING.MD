@@ -6,7 +6,7 @@
 
 ## 透明的开发
 
-我们所有的工作都会放在 [GitHub](https://github.com/wt/hooks) 上。不管是核心团队的成员还是外部贡献者的 pull request 都需要经过同样流程的 review。
+我们所有的工作都会放在 [GitHub](https://github.com/wetrial/hooks) 上。不管是核心团队的成员还是外部贡献者的 pull request 都需要经过同样流程的 review。
 
 ## 分支管理
 
@@ -16,7 +16,7 @@
 
 如果你想新增一个 Hooks，我们建议你先建立一个 issue，说明该 Hook 的应用场景及用法。
 
-然后你可以基于 [contribute_template](https://github.com/wt/hooks/tree/master/contribute_template) 来初始化一个 Hook。
+然后你可以基于 [contribute_template](https://github.com/wetrial/hooks/tree/master/contribute_template) 来初始化一个 Hook。
 
 ## Pull Request
 

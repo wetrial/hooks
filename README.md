@@ -47,7 +47,7 @@ Open your browser and visit http://127.0.0.1:8001 , see more at Development.
 
 ## 🤝 Contributing
 
-We welcome all contributions, please read our [CONTRIBUTING.MD](https://github.com/wt/hooks/blob/master/CONTRIBUTING.MD) first, let's build a better hooks library together.
+We welcome all contributions, please read our [CONTRIBUTING.MD](https://github.com/wetrial/hooks/blob/master/CONTRIBUTING.MD) first, let's build a better hooks library together.
 
 ## ✅ License
 
@@ -60,4 +60,5 @@ We welcome all contributions, please read our [CONTRIBUTING.MD](https://github.c
 [image-1]:	https://img.shields.io/npm/v/@wt/hooks.svg?style=flat
 [image-2]:	https://img.shields.io/npm/dm/@wt/hooks.svg?style=flat
 
+base on  https://github.com/umijs/hooks
 > git remote add upstream git@github.com:wt/hooks.git

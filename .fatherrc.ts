@@ -1,6 +1,5 @@
 import { IBundleOptions } from 'father-build';
 
-
 const zhConfig = {
   dest: '.doc/zh-cn',
   base: '/zh-cn',
@@ -8,11 +7,11 @@ const zhConfig = {
   themeConfig: {
     codemirrorTheme: 'docz-light',
     menus: [
-      { title: '发布日志', link: 'https://github.com/wt/hooks/releases' },
-      { title: 'Github', link: 'https://github.com/wt/hooks' },
+      { title: '发布日志', link: 'https://github.com/wetrial/hooks/releases' },
+      { title: 'Github', link: 'https://github.com/wetrial/hooks' },
     ],
   },
-}
+};
 
 const enConfig = {
   dest: '.doc',
@@ -21,11 +20,11 @@ const enConfig = {
   themeConfig: {
     codemirrorTheme: 'docz-light',
     menus: [
-      { title: 'Changelog', link: 'https://github.com/wt/hooks/releases' },
-      { title: 'Github', link: 'https://github.com/wt/hooks' },
+      { title: 'Changelog', link: 'https://github.com/wetrial/hooks/releases' },
+      { title: 'Github', link: 'https://github.com/wetrial/hooks' },
     ],
   },
-}
+};
 
 const config = process.env.LAN === 'zh-CN' ? zhConfig : enConfig;
 
@@ -36,8 +35,8 @@ const options: IBundleOptions = {
   umd: {
     name: 'umijsHooks',
     globals: {
-      'react': 'React',
-    }
+      react: 'React',
+    },
   },
   disableTypeCheck: true,
   preCommit: {
@@ -46,19 +45,28 @@ const options: IBundleOptions = {
   },
   doc: {
     title: '@wt/hooks',
-    repository: 'https://github.com/wt/hooks',
+    repository: 'https://github.com/wetrial/hooks',
     theme: 'docz-theme-umi-hooks',
-    ignore: ['readme.md', 'changelog.md', 'readme_zh-CN.md', 'contributing.md', 'license.md', '__template__/*.mdx'],
+    ignore: [
+      'readme.md',
+      'changelog.md',
+      'readme_zh-CN.md',
+      'contributing.md',
+      'license.md',
+      '__template__/*.mdx',
+    ],
     ...config,
   },
-  extraBabelPlugins: [[
-    'babel-plugin-import',
-    {
-      libraryName: 'antd',
-      libraryDirectory: 'es',
-      style: true,
-    },
-  ]],
+  extraBabelPlugins: [
+    [
+      'babel-plugin-import',
+      {
+        libraryName: 'antd',
+        libraryDirectory: 'es',
+        style: true,
+      },
+    ],
+  ],
 };
 
 export default options;
