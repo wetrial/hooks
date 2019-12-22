@@ -12,12 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+
+      # Publish to GitHub Package Registry
+      - uses: actions/setup-node@master
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+          scope: '<@OWNER>'
       - run: yarn install
       - run: yarn build
       - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

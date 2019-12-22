@@ -54,11 +54,11 @@ We welcome all contributions, please read our [CONTRIBUTING.MD](https://github.c
 [MIT](https://github.com/umijs/umi/blob/master/LICENSE)
 
 
-[1]:	https://www.npmjs.com/package/@wt/hooks
-[2]:	https://npmjs.org/package/@wt/hooks
+[1]:	https://www.npmjs.com/package/wetrial/hooks
+[2]:	https://npmjs.org/package/wetrial/hooks
 
-[image-1]:	https://img.shields.io/npm/v/@wt/hooks.svg?style=flat
-[image-2]:	https://img.shields.io/npm/dm/@wt/hooks.svg?style=flat
+[image-1]:	https://img.shields.io/npm/v/wetrial/hooks.svg?style=flat
+[image-2]:	https://img.shields.io/npm/dm/wetrial/hooks.svg?style=flat
 
 base on  https://github.com/umijs/hooks
 > git remote add upstream git@github.com:wt/hooks.git
