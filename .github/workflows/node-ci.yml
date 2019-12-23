@@ -1,11 +1,9 @@
-name: Node CI
+name: TEST
 
-#on: [push]
 on:
-  release:
-    types: [published]
-    branches:
-      - master
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   build:
