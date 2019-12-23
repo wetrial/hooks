@@ -7,14 +7,12 @@ on:
       - 'site*'
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-      - name: deploy
-        uses: actions/zeit-now@master
+      - uses: actions/checkout@v1
+      - uses: amondnet/now-deployment@v1
         with:
-          args: --prod
-        env:
-          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          zeit-token: ${{ secrets.ZEIT_TOKEN }}
+          now-args: '--prod'
