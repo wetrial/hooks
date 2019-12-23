@@ -15,13 +15,13 @@ jobs:
           node-version: 12
           registry-url: 'https://registry.npmjs.org'
       - name: Publish to NPMJS
-      run: |
-        npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
-        npm config set scope "<@wetrial>"
-        npm config list
-        npm install
-        npm build
-        npm publish --access public 
-      env:
-        CI: true
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+          npm config set scope "<@wetrial>"
+          npm config list
+          npm install
+          npm build
+          npm publish --access public
+        env:
+          CI: true
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
