@@ -1,6 +1,6 @@
 English | [简体中文](./README_zh-CN.md)
 
-# @wt/hooks
+# @wetrial/hooks
 
 React Hooks Library.
 
@@ -26,13 +26,13 @@ Although our examples are based on ant design, it does not mean that our Hooks c
 ## 📦 Install
 
 ```
-npm i @wt/hooks --save
+npm i @wetrial/hooks --save
 ```
 
 ## 🔨 Usage
 
 ```
-import { useAsync } from '@wt/hooks';
+import { useAsync } from '@wetrial/hooks';
 ```
 
 ## 🖥 Development

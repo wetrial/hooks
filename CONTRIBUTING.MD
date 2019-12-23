@@ -2,7 +2,7 @@
 
 > 参考 ant design [贡献指南](https://ant.design/docs/react/contributing-cn)
 
-这篇指南会指导你如何为 `@wt/hooks` 贡献一份自己的力量，请在你要提 issue 或者 pull request 之前花几分钟来阅读一遍这篇指南。
+这篇指南会指导你如何为 `@wetrial/hooks` 贡献一份自己的力量，请在你要提 issue 或者 pull request 之前花几分钟来阅读一遍这篇指南。
 
 ## 透明的开发
 
@@ -35,7 +35,7 @@
 
 在你 clone 代码并且使用 `npm install` 安装完依赖后，你还可以运行下面几个常用的命令：
 
-1. `npm start` 在本地运行 `@wt/hooks` 网站。
+1. `npm start` 在本地运行 `@wetrial/hooks` 网站。
 
 2. `npm run test` 运行测试。
 

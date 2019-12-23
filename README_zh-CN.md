@@ -1,6 +1,6 @@
 [English](./README.md) | 简体中文
 
-# @wt/hooks
+# @wetrial/hooks
 
 React Hooks Library.
 
@@ -27,13 +27,13 @@ React Hooks Library.
 ## 📦 安装
 
 ```
-npm i @wt/hooks --save
+npm i @wetrial/hooks --save
 ```
 
 ## 🔨使用
 
 ```
-import { useAsync } from '@wt/hooks';
+import { useAsync } from '@wetrial/hooks';
 ```
 
 ## 🖥 开发

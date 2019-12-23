@@ -33,7 +33,7 @@ const options: IBundleOptions = {
   esm: 'babel',
   cjs: 'babel',
   umd: {
-    name: 'umijsHooks',
+    name: 'wetrialHooks',
     globals: {
       react: 'React',
     },
@@ -44,7 +44,7 @@ const options: IBundleOptions = {
     prettier: true,
   },
   doc: {
-    title: '@wt/hooks',
+    title: '@wetrial/hooks',
     repository: 'https://github.com/wetrial/hooks',
     theme: 'docz-theme-umi-hooks',
     ignore: [
