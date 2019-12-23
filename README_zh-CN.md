@@ -4,7 +4,8 @@
 
 React Hooks Library.
 
-[![NPM version][image-1]][1] [![NPM downloads][image-2]][2]
+[![NPM version][image-1]][1]   [![NPM downloads][image-2]][2]   
+![npm status][image-npm]   ![test status][image-test] 
 
 ## 📚 文档
 
@@ -54,11 +55,14 @@ $ npm start
 
 [MIT](https://github.com/umijs/umi/blob/master/LICENSE)
 
-[1]:	https://www.npmjs.com/package/wetrial/hooks
-[2]:	https://npmjs.org/package/wetrial/hooks
 
-[image-1]:	https://img.shields.io/npm/v/wetrial/hooks.svg?style=flat
-[image-2]:	https://img.shields.io/npm/dm/wetrial/hooks.svg?style=flat
+[1]:	https://www.npmjs.com/package/@wetrial/hooks
+[2]:	https://npmjs.org/package/@wetrial/hooks
+
+[image-1]:	https://img.shields.io/npm/v/@wetrial/hooks.svg?style=flat
+[image-2]:	https://img.shields.io/npm/dm/@wetrial/hooks.svg?style=flat  
+[image-npm]: https://github.com/wetrial/hooks/workflows/Publish%20NPM/badge.svg  
+[image-test]: https://github.com/wetrial/hooks/workflows/TEST/badge.svg
 
 基于  https://github.com/umijs/hooks 改造
 > git remote add upstream git@github.com:umijs/hooks.git
