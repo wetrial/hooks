@@ -38,7 +38,7 @@ import { useAsync } from '@wetrial/hooks';
 ## 🖥 Development
 
 ```
-$ git clone git@github.com:wt/hooks.git
+$ git clone git@github.com:wetrial/hooks.git
 $ cd hooks
 $ npm install
 $ npm start
@@ -61,4 +61,4 @@ We welcome all contributions, please read our [CONTRIBUTING.MD](https://github.c
 [image-2]:	https://img.shields.io/npm/dm/wetrial/hooks.svg?style=flat
 
 base on  https://github.com/umijs/hooks
-> git remote add upstream git@github.com:wt/hooks.git
+> git remote add upstream git@github.com:umijs/hooks.git
