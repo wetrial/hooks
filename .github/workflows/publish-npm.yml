@@ -10,13 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@master
         with:
-          node-version: '12.x'
+          node-version: 12
           registry-url: 'https://registry.npmjs.org'
-          scope: wetrial
-      - run: yarn install
-      - run: yarn build
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to NPMJS
+      run: |
+        npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+        npm config set scope "<@wetrial>"
+        npm config list
+        npm install
+        npm build
+        npm publish --access public 
+      env:
+        CI: true
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
