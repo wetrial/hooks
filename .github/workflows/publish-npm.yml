@@ -14,11 +14,9 @@ jobs:
         with:
           node-version: 12
           registry-url: 'https://registry.npmjs.org'
+          scope: '@wetrial'
       - name: Publish to NPMJS
         run: |
-          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
-          npm config set scope "<@wetrial>"
-          npm config list
           npm install
           npm build
           npm publish --access public
