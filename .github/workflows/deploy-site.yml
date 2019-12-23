@@ -2,9 +2,10 @@
 name: Deploy Doc Site
 
 on:
-  push:
-    tags:
-      - 'site*'
+  release:
+    types: [published]
+    branches:
+      - master
 
 jobs:
   deploy:
