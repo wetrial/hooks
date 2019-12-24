@@ -4,8 +4,6 @@ name: Deploy Doc Site
 on:
   release:
     types: [published]
-    branches:
-      - master
 
 jobs:
   deploy:

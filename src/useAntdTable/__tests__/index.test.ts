@@ -25,12 +25,18 @@ describe('useAntdTable', () => {
   let queryArgs: any;
   const asyncFn = (query: Query) => {
     queryArgs = query;
-    return Promise.resolve({
-      current: query.current,
-      total: 20,
-      pageSize: query.pageSize,
-      data: [],
+
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          current: query.current,
+          total: 20,
+          pageSize: query.pageSize,
+          data: [],
+        });
+      }, 5);
     });
+    // return Promise.resolve();
   };
 
   const form: any = {
@@ -142,7 +148,7 @@ describe('useAntdTable', () => {
     });
     await hook.waitForNextUpdate();
     const { search } = hook.result.current;
-    expect(hook.result.current.tableProps.loading).toEqual(false);
+    expect(hook.result.current.tableProps.loading).toEqual(true);
     expect(queryArgs.current).toEqual(1);
     expect(queryArgs.pageSize).toEqual(5);
     expect(queryArgs.name).toEqual('default name');
@@ -154,12 +160,12 @@ describe('useAntdTable', () => {
     // /* 切换 分页 */
     act(() => {
       hook.result.current.tableProps.onChange({
-        current: 2,
+        current: 3,
         pageSize: 5,
       });
     });
     await hook.waitForNextUpdate();
-    expect(queryArgs.current).toEqual(2);
+    expect(queryArgs.current).toEqual(3);
     expect(queryArgs.pageSize).toEqual(5);
     expect(queryArgs.name).toEqual('default name');
 
@@ -278,7 +284,7 @@ describe('useAntdTable', () => {
     if (hook.result.current.search) {
       expect(hook.result.current.search.type).toEqual('simple');
     }
-    expect(hook.result.current.tableProps.pagination.current).toEqual(3);
+    expect(hook.result.current.tableProps.pagination.current).toEqual(1);
     expect(form.fieldsValue.name).toEqual('change name 2');
     expect(form.fieldsValue.phone).toEqual('13344556677');
     expect(form.fieldsValue.email).toEqual('x@qq.com');
