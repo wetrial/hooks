@@ -22,9 +22,9 @@ const asyncFn = (value: any) => {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(data.filter(item => item === value));
-    }, 1);
+    }, 5);
   });
-}
+};
 
 const callChange = (hook: any, value: any) => {
   act(() => {
@@ -91,7 +91,7 @@ describe('useSearch', () => {
       expect.assertions(5);
 
       callChange(hook, 1);
-      await hook.waitForNextUpdate()
+      await hook.waitForNextUpdate();
       expect(hook.result.current.loading).toBeTruthy();
       expect(hook.result.current.value).toEqual(1);
       await hook.waitForNextUpdate();
@@ -101,7 +101,6 @@ describe('useSearch', () => {
       expect((hook.result.current.data as any)[0]).toEqual(1);
       expect(hook.result.current.value).toEqual(2);
     });
-
   });
 
   describe('test on options', () => {
@@ -111,7 +110,7 @@ describe('useSearch', () => {
         initialProps: {
           fn: asyncFn,
           deps: null,
-          options: undefined
+          options: undefined,
         },
       });
     });
@@ -121,7 +120,7 @@ describe('useSearch', () => {
 
       hook.rerender({
         fn: asyncFn,
-        options: { wait: 300 }
+        options: { wait: 300 },
       });
       callCancel(hook);
       expect(hook.result.current.loading).toBeFalsy();
