@@ -1,6 +1,6 @@
 import { useRef, useLayoutEffect, useState, MutableRefObject } from 'react';
 
-require('intersection-observer');
+import 'intersection-observer';
 
 type Arg = HTMLElement | (() => HTMLElement) | null;
 type InViewport = boolean | undefined;

@@ -10,11 +10,11 @@ import {
   useMemo,
   Reducer,
 } from 'react';
+import isEqual from 'lodash.isequal';
 import useAsync from '../useAsync';
 import useUpdateEffect from '../useUpdateEffect';
 import useSessionStorageState from '../useSessionStorageState';
 
-const isEqual = require('lodash.isequal');
 
 interface UseAntdTableFormUtils extends WrappedFormUtils {
   getFieldInstance?: (name: string) => {};
@@ -238,7 +238,7 @@ function useAntdTable<Result, Item>(
     const targetFormData = { ...state.formData, ...tempFieldsValueRef.current };
     const existFormData: FormData = {};
     Object.keys(targetFormData).forEach((key: string) => {
-      if (form.getFieldInstance && form.getFieldInstance(key)) {
+      if (form.getFieldInstance ? form.getFieldInstance(key) : true) {
         existFormData[key] = targetFormData[key];
       }
     });
@@ -254,7 +254,7 @@ function useAntdTable<Result, Item>(
     const fieldsValue = form.getFieldsValue();
     const filterFiledsValue: FormData = {};
     Object.keys(fieldsValue).forEach((key: string) => {
-      if (form.getFieldInstance && form.getFieldInstance(key)) {
+      if (form.getFieldInstance ? form.getFieldInstance(key) : true) {
         filterFiledsValue[key] = fieldsValue[key];
       }
     });
