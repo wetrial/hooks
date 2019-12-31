@@ -1,4 +1,4 @@
-name: Publish NPM
+name: publish-npm
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@wetrial'
       - name: Publish to NPMJS
-        run: npm install && npm build && npm publish --access public
+        run: npm run install && npm run build && npm publish --access public
         env:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
