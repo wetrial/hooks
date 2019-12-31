@@ -80,5 +80,5 @@ export function useResponsive() {
     };
   }, []);
 
-  return { screen, match: state };
+  return { screen, responsive: state };
 }
