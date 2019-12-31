@@ -24,5 +24,7 @@ describe('useResponsive', () => {
     expect(hook.result.current).toMatchSnapshot();
     changeWidth(1200);
     expect(hook.result.current).toMatchSnapshot();
+    changeWidth(1600);
+    expect(hook.result.current).toMatchSnapshot();
   });
 });

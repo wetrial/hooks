@@ -19,6 +19,7 @@ let responsiveConfig: ResponsiveConfig = {
   md: 768,
   lg: 992,
   xl: 1200,
+  xxl: 1600,
 };
 
 function init() {
