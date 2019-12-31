@@ -2,7 +2,7 @@
 
 exports[`useResponsive should response to window width changes 1`] = `
 Object {
-  "match": Object {
+  "responsive": Object {
     "lg": true,
     "md": true,
     "sm": true,
@@ -16,7 +16,7 @@ Object {
 
 exports[`useResponsive should response to window width changes 2`] = `
 Object {
-  "match": Object {
+  "responsive": Object {
     "lg": false,
     "md": false,
     "sm": false,
@@ -30,7 +30,7 @@ Object {
 
 exports[`useResponsive should response to window width changes 3`] = `
 Object {
-  "match": Object {
+  "responsive": Object {
     "lg": false,
     "md": false,
     "sm": true,
@@ -44,7 +44,7 @@ Object {
 
 exports[`useResponsive should response to window width changes 4`] = `
 Object {
-  "match": Object {
+  "responsive": Object {
     "lg": false,
     "md": true,
     "sm": true,
@@ -58,7 +58,7 @@ Object {
 
 exports[`useResponsive should response to window width changes 5`] = `
 Object {
-  "match": Object {
+  "responsive": Object {
     "lg": true,
     "md": true,
     "sm": true,
@@ -72,7 +72,7 @@ Object {
 
 exports[`useResponsive should response to window width changes 6`] = `
 Object {
-  "match": Object {
+  "responsive": Object {
     "lg": true,
     "md": true,
     "sm": true,
@@ -86,7 +86,7 @@ Object {
 
 exports[`useResponsive should response to window width changes 7`] = `
 Object {
-  "match": Object {
+  "responsive": Object {
     "lg": true,
     "md": true,
     "sm": true,
