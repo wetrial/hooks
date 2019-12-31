@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 type Subscriber = () => void;
 
@@ -58,9 +58,17 @@ export function configResponsive(config: ResponsiveConfig) {
   if (info) calculate();
 }
 
+// 根据屏幕宽度获取使用的样式
+function computeScreenClass(responsive: ResponsiveInfo) {
+  return Object.keys(responsive)
+    .reverse()
+    .find(key => responsive[key]);
+}
+
 export function useResponsive() {
   init();
   const [state, setState] = useState<ResponsiveInfo>(info);
+  const screen = useMemo(() => computeScreenClass(info), [info]);
 
   useEffect(() => {
     const subscriber = () => {
@@ -72,5 +80,5 @@ export function useResponsive() {
     };
   }, []);
 
-  return state;
+  return { screen, match: state };
 }
