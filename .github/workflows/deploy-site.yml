@@ -1,9 +1,10 @@
 # Do not use now
-name: Deploy Doc Site
+name: deploy-site
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   deploy:
