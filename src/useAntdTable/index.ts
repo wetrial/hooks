@@ -15,7 +15,6 @@ import useAsync from '../useAsync';
 import useUpdateEffect from '../useUpdateEffect';
 import useSessionStorageState from '../useSessionStorageState';
 
-
 interface UseAntdTableFormUtils extends WrappedFormUtils {
   getFieldInstance?: (name: string) => {};
 }
@@ -218,7 +217,9 @@ function useAntdTable<Result, Item>(
 
     // 记录请求数据的缓存
     if (id) {
-      setCache(stateRef.current);
+      const cacheData = { ...stateRef.current };
+      delete cacheData['data'];
+      setCache(cacheData);
     }
 
     run(params).then(res => {
