@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 import { PaginationConfig } from 'antd/lib/pagination';
 import { SorterResult } from 'antd/lib/table';
@@ -20,21 +21,6 @@ interface UseAntdTableFormUtils extends WrappedFormUtils {
 }
 
 export interface ReturnValue<Item> {
-  /* table 已经废弃 */
-  table?: {
-    dataSource: Item[];
-    loading: boolean;
-    onChange: (
-      pagination: PaginationConfig,
-      filters?: Record<keyof Item, string[]>,
-      sorter?: SorterResult<Item>,
-    ) => void;
-    pagination: {
-      current: number;
-      pageSize: number;
-      total: number;
-    };
-  };
   tableProps: {
     dataSource: Item[];
     loading: boolean;
@@ -112,7 +98,7 @@ class UseTableInitState<Item> {
   activeFormData: FormData = {};
 
   // 计数器
-  count = 0;
+  _count = 0;
 
   // 列表数据
   data: Item[] = [];
@@ -174,17 +160,17 @@ function useAntdTable<Result, Item>(
       type: 'updateState',
       payload: {
         current: 1,
-        count: state.count + 1,
+        _count: state._count + 1,
       },
     });
-  }, [state.count]);
+  }, [state._count]);
 
   const refresh = useCallback(() => {
     dispatch({
       type: 'updateState',
-      payload: { count: state.count + 1 },
+      payload: { _count: state._count + 1 },
     });
-  }, [state.count]);
+  }, [state._count]);
 
   const [cache, setCache] = useSessionStorageState<IKeyValue>(`__paged__${id}`);
 
@@ -193,7 +179,7 @@ function useAntdTable<Result, Item>(
     reload();
   }, _deps);
 
-  /* state.count 变化时，重新请求数据 */
+  /* state._count 变化时，重新请求数据 */
   useUpdateEffect(() => {
     const formattedData: FormData = {};
     /* 把  undefined 的过滤掉 */
@@ -214,22 +200,23 @@ function useAntdTable<Result, Item>(
     if (state.sorter) {
       params.sorter = state.sorter;
     }
-
-    // 记录请求数据的缓存
-    if (id) {
-      const cacheData = { ...stateRef.current };
-      delete cacheData['data'];
-      setCache(cacheData);
-    }
-
     run(params).then(res => {
       const payload = formatResult ? formatResult(res) : res;
       dispatch({
         type: 'updateState',
         payload,
       });
+
+      // 记录请求数据的缓存
+      if (id) {
+        const cacheData = { ...stateRef.current };
+        delete cacheData['data'];
+        delete cacheData['_count'];
+        delete cacheData['total'];
+        setCache(cacheData);
+      }
     });
-  }, [state.current, state.pageSize, state.count]);
+  }, [state.current, state.pageSize, state._count]);
 
   /* 改变了 searchType，或者 formData，恢复表单数据 */
   useUpdateEffect(() => {
@@ -346,27 +333,16 @@ function useAntdTable<Result, Item>(
         payload: {
           current: needReload ? 1 : p.current,
           pageSize: p.pageSize,
-          count: state.count + 1,
+          _count: state._count + 1,
           filters: f,
           sorter: s,
         },
       });
     },
-    [state.count],
+    [state._count],
   );
 
   const result: ReturnValue<Item> = {
-    /* table 已经废弃 */
-    table: {
-      dataSource: state.data,
-      loading,
-      onChange: changeTable,
-      pagination: {
-        current: state.current,
-        pageSize: state.pageSize,
-        total: state.total,
-      },
-    },
     tableProps: {
       dataSource: state.data,
       loading,
@@ -404,13 +380,13 @@ function useAntdTable<Result, Item>(
         type: 'updateState',
         payload: {
           current: cache.current,
-          pageSize: cache.pageSize,
+          pageSize: cache.pageSize || defaultPageSize,
           searchType: cache.searchType,
           activeFormData: cache.activeFormData,
           formData: cache.formData,
           filters: cache.filters,
           sorter: cache.sorter,
-          count: state.count + 1,
+          _count: state._count + 1,
         },
       });
     } else if (form) {
@@ -430,14 +406,29 @@ export default useAntdTable;
 /**
  * 激活缓存
  * @param key 页面缓存的key
+ * @param reset 重置分页信息或者用指定数据覆盖
  */
-export const activeCache = (key: string) => {
+export const activeCache = (key: string, reset: boolean | IKeyValue = false) => {
   const cacheKey = `__paged__${key}`;
   if (sessionStorage) {
     const cache = sessionStorage.getItem(cacheKey);
     if (cache !== null) {
-      const cacheData = JSON.parse(cache);
+      let cacheData = JSON.parse(cache);
       cacheData.active = true;
+      if (reset) {
+        if (typeof reset === 'boolean') {
+          delete cacheData._count;
+          delete cacheData.pageSize;
+          cacheData = {
+            ...cacheData,
+            current: 1,
+            sorter: {},
+            // _count: 1,
+          };
+        } else {
+          cacheData = { ...cacheData, ...reset };
+        }
+      }
       sessionStorage.setItem(cacheKey, JSON.stringify(cacheData));
     }
   }
