@@ -5,6 +5,7 @@ describe('useResponsive', () => {
   function changeWidth(width: number) {
     act(() => {
       (global as any).innerWidth = width;
+      (global as any).innerHeight = 700;
       (global as any).dispatchEvent(new Event('resize'));
     });
   }
