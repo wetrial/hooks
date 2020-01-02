@@ -8,16 +8,14 @@ import { useResponsive } from '..';
 // });
 
 export default function() {
-  const responsive = useResponsive();
+  const { screen, size } = useResponsive();
   return (
     <>
       <p>Please change the width of the browser window to see the effect: </p>
-      <p>screen:{responsive.screen}</p>
-      {Object.keys(responsive.match).map(key => (
-        <p key={key}>
-          {key} {responsive.match[key] ? '✔' : '✘'}
-        </p>
-      ))}
+      <p>screen:{screen}</p>
+      <p>
+        height:{size.height},width:{size.width}
+      </p>
     </>
   );
 }

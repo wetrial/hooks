@@ -34,14 +34,14 @@ React Hook for getting responsive info.
 ## API
 
 ```typescript
-interface ResponsiveConfig {
-  [key: string]: number;
-}
 interface ResponsiveInfo {
-  [key: string]: boolean;
+  screen: string;
+  size: {
+    height: number;
+    width: number;
+  };
 }
-function configResponsive(config: ResponsiveConfig): void
-function useResponsive(): ResponsiveInfo
+function useResponsive():ResponsiveInfo
 ```
 
 ### Config
@@ -50,23 +50,28 @@ The default config is the same as bootstrap:
 
 ```javascript
 {
-  'xs': 0,
-  'sm': 576,
-  'md': 768,
-  'lg': 992,
-  'xl': 1200,
-  'xxl': 1600,
+   xs: {
+    min: -Infinity,
+    max: 576,
+  },
+  sm: {
+    min: 576,
+    max: 768,
+  },
+  md: {
+    min: 768,
+    max: 992,
+  },
+  lg: {
+    min: 992,
+    max: 1200,
+  },
+  xl: {
+    min: 1200,
+    max: 1600,
+  },
+  xxl: {
+    min: 1600,
+    max: +Infinity,
+  }
 }
-```
-
-If you want to config your own responsive breakpoints, you can use `configResponsive`:
-
-(Caution: You only need to config it once. Don't call this config function repeatedly.)【no suggest】
-
-```javascript
-configResponsive({
-  small: 0,
-  middle: 800,
-  large: 1200,
-});
-```

@@ -34,14 +34,14 @@ import Demo1CodeJsx from '!raw-loader!./demo/demo1.jsx';
 ## API
 
 ```typescript
-interface ResponsiveConfig {
-  [key: string]: number;
-}
 interface ResponsiveInfo {
-  [key: string]: boolean;
+  screen: string;
+  size: {
+    height: number;
+    width: number;
+  };
 }
-function configResponsive(config: ResponsiveConfig): void
-function useResponsive(): ResponsiveInfo
+function useResponsive():ResponsiveInfo
 ```
 
 ### 配置
@@ -50,23 +50,28 @@ function useResponsive(): ResponsiveInfo
 
 ```javascript
 {
-  'xs': 0,
-  'sm': 576,
-  'md': 768,
-  'lg': 992,
-  'xl': 1200,
-  'xxl': 1600,
+   xs: {
+    min: -Infinity,
+    max: 576,
+  },
+  sm: {
+    min: 576,
+    max: 768,
+  },
+  md: {
+    min: 768,
+    max: 992,
+  },
+  lg: {
+    min: 992,
+    max: 1200,
+  },
+  xl: {
+    min: 1200,
+    max: 1600,
+  },
+  xxl: {
+    min: 1600,
+    max: +Infinity,
+  }
 }
-```
-
-如果你想配置自己的响应式断点，可以使用 `configResponsive` ：
-
-（注意：只需配置一次，请勿在组件中重复调用该方法）【建议不使用用】
-
-```javascript
-configResponsive({
-  small: 0,
-  middle: 800,
-  large: 1200,
-});
-```
