@@ -140,7 +140,7 @@ function useAntdTable<Result, Item>(
 
   const initState = useMemo(() => new UseTableInitState<Item>(), []);
 
-  const { defaultPageSize = 10, id, form, formatResult } = _options;
+  const { defaultPageSize = 15, id, form, formatResult } = _options;
   const [state, dispatch] = useReducer<Reducer<UseTableInitState<Item>, any>>(reducer, {
     ...initState,
     pageSize: defaultPageSize,
@@ -160,6 +160,8 @@ function useAntdTable<Result, Item>(
       type: 'updateState',
       payload: {
         current: 1,
+        sorter: {},
+        filter: {},
         _count: state._count + 1,
       },
     });
@@ -432,11 +434,4 @@ export const activeCache = (key: string, reset: boolean | IKeyValue = false) => 
       sessionStorage.setItem(cacheKey, JSON.stringify(cacheData));
     }
   }
-  // debugger
-  // const [cache, setCache] = useSessionStorageState<IKeyValue>(cacheKey);
-  // debugger
-  // if (cache) {
-  //   cache.active = true;
-  //   setCache(cache);
-  // }
 };
