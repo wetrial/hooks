@@ -23,14 +23,8 @@ export default () => {
 
   useEffect(() => {
     const moveHandler = (event: MouseEvent) => {
-      setState({
-        screenX: event.screenX,
-        screenY: event.screenY,
-        clientX: event.clientX,
-        clientY: event.clientY,
-        pageX: event.pageX,
-        pageY: event.pageY,
-      });
+      const { screenX, screenY, clientX, clientY, pageX, pageY } = event;
+      setState({ screenX, screenY, clientX, clientY, pageX, pageY });
     };
     document.addEventListener('mousemove', moveHandler);
     return () => {
