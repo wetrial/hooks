@@ -3,7 +3,6 @@ import { Table } from 'antd';
 
 export default function(props) {
   const { sorter, filters, tableProps } = props;
-
   const columns = [
     {
       title: 'tenancyName',
@@ -32,5 +31,5 @@ export default function(props) {
       filteredValue: filters.editionDisplayName,
     },
   ];
-  return <Table columns={columns} rowKey="id" {...tableProps} />;
+  return <Table {...tableProps} columns={columns} rowKey="id" />;
 }

@@ -113,7 +113,7 @@ const reducer = <Item>(state: UseTableInitState<Item>, action: { type: string; p
     case 'updateState':
       return { ...state, ...action.payload };
     default:
-      throw new Error();
+      throw new Error(`unsupport action.type:${action.type}`);
   }
 };
 
@@ -140,7 +140,7 @@ function useAntdTable<Result, Item>(
 
   const initState = useMemo(() => new UseTableInitState<Item>(), []);
 
-  const { defaultPageSize = 15, id, form, formatResult } = _options;
+  const { defaultPageSize = 10, id, form, formatResult } = _options;
   const [state, dispatch] = useReducer<Reducer<UseTableInitState<Item>, any>>(reducer, {
     ...initState,
     pageSize: defaultPageSize,
@@ -154,14 +154,13 @@ function useAntdTable<Result, Item>(
   const { run, loading } = useAsync<Result>(fn, _deps, {
     manual: true,
   });
-
   const reload = useCallback(() => {
     dispatch({
       type: 'updateState',
       payload: {
         current: 1,
         sorter: {},
-        filter: {},
+        filters: {},
         _count: state._count + 1,
       },
     });

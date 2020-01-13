@@ -38,7 +38,6 @@ const AppList = (props: AppListProps) => {
     form: props.form,
     id: 'tableId',
   });
-
   const { type, changeType, submit, reset } = search || {};
 
   const columns = [

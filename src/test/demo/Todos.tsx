@@ -3,7 +3,7 @@ import { Table } from 'antd';
 
 export default function(props) {
   const { sorter, filters, tableProps } = props;
-
+  console.log(tableProps);
   const columns = [
     {
       title: 'hostTenancyName',
@@ -32,5 +32,5 @@ export default function(props) {
       filteredValue: filters.hostEditionDisplayName,
     },
   ];
-  return <Table columns={columns} rowKey="id" {...tableProps} />;
+  return <Table {...tableProps} columns={columns} rowKey="id" />;
 }

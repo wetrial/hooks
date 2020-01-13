@@ -1,8 +1,7 @@
-import React, { Suspense, useMemo } from 'react';
-import router from 'umi/router';
+import React, { Suspense, useMemo, useState } from 'react';
 import { Tabs, Form, Input, Button } from 'antd';
-import { useAntdTable, activeCache } from '@wetrial/hooks';
-import { getTenants, getHosts } from './service';
+import useAntdTable from '../../useAntdTable';
+import { getLists, getTodos } from './service';
 
 const { TabPane } = Tabs;
 
@@ -24,10 +23,10 @@ function getCurTab(active) {
   let api;
   if (activeKey === 'index') {
     showTabPanel = React.lazy<any>(() => import('./List'));
-    api = getTenants;
+    api = getLists;
   } else {
     showTabPanel = React.lazy<any>(() => import('./Todos'));
-    api = getHosts;
+    api = getTodos;
   }
 
   return {
@@ -39,23 +38,19 @@ function getCurTab(active) {
 
 const MyTabs = props => {
   const {
-    location: { query },
     form: { getFieldDecorator },
   } = props;
 
-  const handleChangeTab = active => {
-    activeCache('tableId', true);
-    router.push({
-      query: {
-        active,
-      },
-    });
+  const [active, setActive] = useState('index');
+
+  const handleChangeTab = key => {
+    setActive(key);
   };
 
-  const { activeKey, ShowTabPanel, api } = useMemo(() => getCurTab(query.active), [query.active]);
+  const { activeKey, ShowTabPanel, api } = useMemo(() => getCurTab(active), [active]);
 
   const { tableProps, filters, sorter, search } = useAntdTable<any, any>(api, [activeKey], {
-    defaultPageSize: 5,
+    defaultPageSize: 10,
     form: props.form,
     id: 'tableId',
     formatResult: result => ({
@@ -65,7 +60,6 @@ const MyTabs = props => {
   });
 
   const { type, changeType, submit, reset } = search || {};
-
   return (
     <>
       <Form style={{ display: 'flex', justifyContent: 'flex-end' }}>
