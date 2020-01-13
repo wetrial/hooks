@@ -27,6 +27,12 @@ import Demo5 from './demo/demo5';
 import Demo5CodeTsx from '!raw-loader!./demo/demo5.tsx';
 import Demo5CodeJsx from '!raw-loader!./demo/demo5.jsx';
 
+import DemoTabs from './demo/demo_tabs/index';
+import DemoTabsServiceCodeTsx from '!raw-loader!./demo/demo_tabs/service.ts';
+import DemoTabsListCodeTsx from '!raw-loader!./demo/demo_tabs/List.tsx';
+import DemoTabsTodosCodeTsx from '!raw-loader!./demo/demo_tabs/Todos.tsx';
+import DemoTabsIndexCodeTsx from '!raw-loader!./demo/demo_tabs/index.tsx';
+
 
 # useAntdTable
 
@@ -69,6 +75,26 @@ import Demo5CodeJsx from '!raw-loader!./demo/demo5.jsx';
 
 <JackBox jsCode={Demo5CodeJsx} tsCode={Demo5CodeTsx} demoName='数据缓存' description='如果 options 传了 id 参数，则我们会将当前表单数据、分页数据、筛选排序等数据全部缓存下来，下次构建时恢复缓存数据'>
   <Demo5 />
+</JackBox>
+
+### 数据缓存-tabs
+
+<JackBox tsCode={
+  `
+// ---------------------------------------------------- service.ts Start -------------------------------------------------------
+${DemoTabsServiceCodeTsx}
+
+// ---------------------------------------------------- List.tsx Start -------------------------------------------------------
+${DemoTabsListCodeTsx}
+
+// ---------------------------------------------------- Todos.tsx Start -------------------------------------------------------
+${DemoTabsTodosCodeTsx}
+
+// ---------------------------------------------------- index.tsx Start -------------------------------------------------------
+${DemoTabsIndexCodeTsx}
+`
+} demoName='数据缓存-tabs' description='如果 options 传了 id 参数，则我们会将当前表单数据、分页数据、筛选排序等数据全部缓存下来，刷新进入或者从其他页面返回时调用activeCache后再路由到该页面将会使用记录的搜索条件来搜索，如果在同一个页面切换tab页面，则会保留搜索条件(重置页码、排序、页容等)'>
+  <DemoTabs />
 </JackBox>
 
 ## API
@@ -151,7 +177,7 @@ interface ReturnValue<Item> {
 
 ## 还原搜索条件、页码等
 
-从其他页面跳转到本页面，如果需要还原之前的搜索状态 
+从其他页面跳转到本页面，如果需要还原之前的搜索状态
 
 ```
  import {activeCache} from '@wetrial/useAntdTable';
