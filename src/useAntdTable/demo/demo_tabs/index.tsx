@@ -1,6 +1,6 @@
 import React, { Suspense, useMemo, useState } from 'react';
 import { Tabs, Form, Input, Button } from 'antd';
-import useAntdTable from '../..';
+import useAntdTable from '../../index';
 import { getLists, getTodos } from './service';
 
 const { TabPane } = Tabs;

@@ -100,4 +100,14 @@ describe('useLocalStorageState', () => {
     const anotherHook = setUp(LOCAL_STORAGE_KEY, false);
     expect(anotherHook.result.current.state).toEqual(null);
   });
+
+  it('should support function updater', () => {
+    const LOCAL_STORAGE_KEY = 'test-func-updater';
+    const hook = setUp<string | null>(LOCAL_STORAGE_KEY, 'hello world');
+    expect(hook.result.current.state).toEqual('hello world');
+    act(() => {
+      hook.result.current.setState(state => `${state}, zhangsan`);
+    });
+    expect(hook.result.current.state).toEqual('hello world, zhangsan');
+  });
 });

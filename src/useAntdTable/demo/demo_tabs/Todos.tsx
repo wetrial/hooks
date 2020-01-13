@@ -3,7 +3,6 @@ import { Table } from 'antd';
 
 export default function(props) {
   const { sorter, filters, tableProps } = props;
-  console.log(tableProps);
   const columns = [
     {
       title: 'hostTenancyName',
