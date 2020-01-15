@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
-import { WrappedFormUtils } from 'antd/lib/form/Form';
+import { FormInstance } from 'antd/lib/form';
 import { PaginationConfig } from 'antd/lib/pagination';
-import { SorterResult } from 'antd/lib/table';
+import { SorterResult } from 'antd/lib/table/interface';
 import {
   DependencyList,
   useCallback,
@@ -16,7 +16,7 @@ import useAsync from '../useAsync';
 import useUpdateEffect from '../useUpdateEffect';
 import useSessionStorageState from '../useSessionStorageState';
 
-interface UseAntdTableFormUtils extends WrappedFormUtils {
+interface UseAntdTableFormUtils extends FormInstance {
   getFieldInstance?: (name: string) => {};
 }
 

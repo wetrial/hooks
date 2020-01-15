@@ -53,6 +53,7 @@
   "dependencies": {
     "intersection-observer": "^0.7.0",
     "lodash.isequal": "^4.5.0",
+    "pubsub-js": "^1.8.0",
     "resize-observer-polyfill": "^1.5.1",
     "screenfull": "^5.0.0"
   },
@@ -64,7 +65,8 @@
     "@testing-library/react-hooks": "^2.0.1",
     "@types/jest": "^24.0.15",
     "@types/lodash.isequal": "^4.5.5",
-    "antd": "^3.26.6",
+    "@types/pubsub-js": "^1.5.18",
+    "antd": "^4.0.0-rc.1",
     "babel-plugin-import": "^1.12.0",
     "cross-env": "^6.0.3",
     "del": "^5.1.0",

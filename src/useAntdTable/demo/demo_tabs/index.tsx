@@ -36,10 +36,8 @@ function getCurTab(active) {
   };
 }
 
-const MyTabs = props => {
-  const {
-    form: { getFieldDecorator },
-  } = props;
+const MyTabs = () => {
+  const [form] = Form.useForm();
 
   const [active, setActive] = useState('index');
 
@@ -51,8 +49,8 @@ const MyTabs = props => {
 
   const { tableProps, filters, sorter, search } = useAntdTable<any, any>(api, [activeKey], {
     defaultPageSize: 10,
-    form: props.form,
-    id: 'tableId',
+    form,
+    id: 'tabs_tableId',
     formatResult: result => ({
       total: result.totalCount,
       data: result.items,
@@ -62,30 +60,32 @@ const MyTabs = props => {
   const { type, changeType, submit, reset } = search || {};
   return (
     <>
-      <Form style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        {getFieldDecorator('name')(
-          <Input placeholder="enter name" style={{ width: 140, marginRight: 16 }} />,
-        )}
+      <Form form={form} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Form.Item name="name" label="name">
+          <Input placeholder="enter name" style={{ width: 140, marginRight: 16 }} />
+        </Form.Item>
 
         {type === 'advance' && (
           <>
-            {getFieldDecorator('email')(
-              <Input placeholder="enter email" style={{ width: 140, marginRight: 16 }} />,
-            )}
-            {getFieldDecorator('phone')(
-              <Input placeholder="enter phone" style={{ width: 140, marginRight: 16 }} />,
-            )}
+            <Form.Item name="email" label="email">
+              <Input placeholder="enter email" style={{ width: 140, marginRight: 16 }} />
+            </Form.Item>
+            <Form.Item name="phone" label="phone">
+              <Input placeholder="enter phone" style={{ width: 140, marginRight: 16 }} />
+            </Form.Item>
           </>
         )}
-        <Button type="primary" onClick={submit}>
-          Search
-        </Button>
-        <Button onClick={reset} style={{ marginLeft: 8 }}>
-          Reset
-        </Button>
-        <Button type="link" onClick={changeType}>
-          {type === 'simple' ? 'Expand' : 'Close'}
-        </Button>
+        <Form.Item>
+          <Button type="primary" onClick={submit}>
+            Search
+          </Button>
+          <Button onClick={reset} style={{ marginLeft: 8 }}>
+            Reset
+          </Button>
+          <Button type="link" onClick={changeType}>
+            {type === 'simple' ? 'Expand' : 'Close'}
+          </Button>
+        </Form.Item>
       </Form>
       <Tabs onChange={handleChangeTab} defaultActiveKey={activeKey}>
         {keys.map(item => (
@@ -113,4 +113,4 @@ const MyTabs = props => {
   );
 };
 
-export default Form.create()(MyTabs);
+export default MyTabs;

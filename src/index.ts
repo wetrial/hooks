@@ -29,6 +29,7 @@ import useFullscreen from './useFullscreen';
 import useInViewport from './useInViewport';
 import useKeyPress from './useKeyPress';
 import useEventListener from './useEventListener';
+import { usePublish, useSubscribe, PubSub } from './usePubSub';
 
 const useControlledValue: typeof useControllableValue = function(...args) {
   console.warn(
@@ -50,6 +51,8 @@ export {
   useVirtualList,
   useResponsive,
   useEventEmitter,
+  useSubscribe,
+  PubSub,
   useLocalStorageState,
   useSessionStorageState,
   useSize,
