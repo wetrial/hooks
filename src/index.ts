@@ -29,7 +29,7 @@ import useFullscreen from './useFullscreen';
 import useInViewport from './useInViewport';
 import useKeyPress from './useKeyPress';
 import useEventListener from './useEventListener';
-import { usePublish, useSubscribe, PubSub } from './usePubSub';
+import { useSubscribe, PubSub } from './usePubSub';
 
 const useControlledValue: typeof useControllableValue = function(...args) {
   console.warn(
