@@ -1,6 +1,6 @@
 {
   "name": "@wetrial/hooks",
-  "version": "0.10.16",
+  "version": "0.10.17",
   "description": "react hooks library",
   "keywords": [
     "umi hooks",
