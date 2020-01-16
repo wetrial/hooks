@@ -1,6 +1,6 @@
 {
   "name": "@wetrial/hooks",
-  "version": "0.10.14",
+  "version": "0.10.15",
   "description": "react hooks library",
   "keywords": [
     "umi hooks",
@@ -60,8 +60,8 @@
     "screenfull": "^5.0.0"
   },
   "peerDependencies": {
-    "antd": "4.x",
     "@ant-design/icons": "4.x",
+    "antd": "4.x",
     "react": "^16.8.6"
   },
   "devDependencies": {
