@@ -51,6 +51,8 @@
     "package.json"
   ],
   "dependencies": {
+    "@ant-design/icons": "^4.0.0-alpha.19",
+    "antd": "^4.0.0-rc.1",
     "intersection-observer": "^0.7.0",
     "lodash.isequal": "^4.5.0",
     "pubsub-js": "^1.8.0",
@@ -58,7 +60,8 @@
     "screenfull": "^5.0.0"
   },
   "peerDependencies": {
-    "antd": "^3.26.6",
+    "antd": "4.x",
+    "@ant-design/icons": "4.x",
     "react": "^16.8.6"
   },
   "devDependencies": {
@@ -66,7 +69,6 @@
     "@types/jest": "^24.0.15",
     "@types/lodash.isequal": "^4.5.5",
     "@types/pubsub-js": "^1.5.18",
-    "antd": "^4.0.0-rc.1",
     "babel-plugin-import": "^1.12.0",
     "cross-env": "^6.0.3",
     "del": "^5.1.0",
