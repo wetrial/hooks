@@ -1,108 +1,46 @@
 {
-  "name": "@wetrial/hooks",
-  "version": "0.10.18",
-  "description": "react hooks library",
-  "keywords": [
-    "umi hooks",
-    "react hooks"
-  ],
-  "main": "./lib/index.js",
-  "module": "./es/index.js",
-  "types": "./lib/index.d.ts",
-  "authors": {
-    "name": "xiexingen",
-    "email": "1002275364@qq.com"
+  "name": "@umijs/hooks",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umijs/hooks.git"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
-  },
-  "repository": "https://github.com/wetrial/hooks",
-  "homepage": "https://github.com/wetrial/hooks",
   "scripts": {
+    "init": "rm -rf node_modules && npm install && npm run clean && npm run bootstrap && npm run build",
     "start": "npm run dev",
-    "dev": "cross-env LAN=zh-CN father doc dev",
-    "dev:en-us": "father doc dev",
-    "js": "node ./.ts2js.js",
-    "build": "node ./scripts/clean-old-build.js && father build && tsc --declarationDir ./lib && tsc --declarationDir ./es && node ./scripts/build-wind-up.js",
+    "dev": "father-doc dev",
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean --yes",
+    "compile": "lerna run --scope @umijs/use-request compile && lerna run --scope @umijs/hooks compile",
+    "build": "node ./scripts/clean-old-build.js && father build && npm run compile && node ./scripts/build-wind-up.js",
     "test": "father test",
     "cov": "father test --coverage",
     "help": "father help",
     "precommit": "father pre-commit",
-    "build:doc": "father doc build &&cross-env LAN=zh-CN father doc build",
+    "build:doc": "father-doc build",
     "pub:doc": "now --prod",
-    "patch": "yarn version --patch && git push origin master && git push origin --tags",
-    "minor": "yarn version --minor && git push origin master && git push origin --tags",
-    "major": "yarn version --major && git push origin master && git push origin --tags",
-    "lint": "yarn lint:js && yarn lint:style && yarn lint:prettier",
-    "lint-staged": "lint-staged",
-    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
-    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && yarn lint:style",
-    "lint:js": "eslint --debug --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./",
-    "lint:prettier": "check-prettier lint",
-    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
-    "prettier": "prettier -c --write \"**/*\""
-  },
-  "files": [
-    "dist",
-    "lib",
-    "es",
-    "README.md",
-    "LICENSE",
-    "package.json"
-  ],
-  "dependencies": {
-    "@ant-design/icons": "^4.0.0-alpha.19",
-    "antd": "^4.0.0-rc.1",
-    "intersection-observer": "^0.7.0",
-    "lodash.isequal": "^4.5.0",
-    "pubsub-js": "^1.8.0",
-    "resize-observer-polyfill": "^1.5.1",
-    "screenfull": "^5.0.0"
-  },
-  "peerDependencies": {
-    "@ant-design/icons": "4.x",
-    "antd": "4.x",
-    "react": "^16.8.6"
+    "pub": "father publish"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^2.0.1",
     "@types/jest": "^24.0.15",
+    "@types/lodash.debounce": "^4.0.6",
     "@types/lodash.isequal": "^4.5.5",
-    "@types/pubsub-js": "^1.5.18",
+    "@types/lodash.throttle": "^4.1.6",
     "babel-plugin-import": "^1.12.0",
-    "cross-env": "^6.0.3",
+    "create-test-server": "^3.0.1",
     "del": "^5.1.0",
-    "docz-theme-umi-hooks": "^0.0.7",
     "enzyme": "^3.10.0",
     "father": "^2.13.3",
-    "husky": "^3.1.0",
-    "jackbox": "^0.2.0",
-    "lint-staged": "^9.5.0",
-    "now": "^16.7.0",
-    "raw-loader": "^3.1.0",
+    "father-doc": "^1.0.0-alpha.19",
+    "lerna": "^3.20.2",
+    "mockjs": "^1.1.0",
+    "now": "^16.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-drag-listview": "^0.1.6",
-    "resize-observer-polyfill": "^1.5.1",
-    "sylvanas": "^0.4.2",
-    "typescript": "^3.3.3"
-  },
-  "engines": {
-    "node": ">=8.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.less": "stylelint --syntax less",
-    "**/*.{js,jsx,tsx,ts,less,md,json}": [
-      "prettier --write",
-      "git add"
-    ],
-    "**/*.{js,jsx}": "npm run lint-staged:js",
-    "**/*.{js,ts,tsx}": "npm run lint-staged:js"
-  },
-  "license": "MIT"
+    "typescript": "^3.3.3",
+    "umi-plugin-react": "^1.15.2",
+    "umi-request": "^1.2.18"
+  }
 }

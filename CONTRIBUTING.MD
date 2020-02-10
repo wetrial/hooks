@@ -2,11 +2,11 @@
 
 > 参考 ant design [贡献指南](https://ant.design/docs/react/contributing-cn)
 
-这篇指南会指导你如何为 `@wetrial/hooks` 贡献一份自己的力量，请在你要提 issue 或者 pull request 之前花几分钟来阅读一遍这篇指南。
+这篇指南会指导你如何为 `@umijs/hooks` 贡献一份自己的力量，请在你要提 issue 或者 pull request 之前花几分钟来阅读一遍这篇指南。
 
 ## 透明的开发
 
-我们所有的工作都会放在 [GitHub](https://github.com/wetrial/hooks) 上。不管是核心团队的成员还是外部贡献者的 pull request 都需要经过同样流程的 review。
+我们所有的工作都会放在 [GitHub](https://github.com/umijs/hooks) 上。不管是核心团队的成员还是外部贡献者的 pull request 都需要经过同样流程的 review。
 
 ## 分支管理
 
@@ -16,7 +16,7 @@
 
 如果你想新增一个 Hooks，我们建议你先建立一个 issue，说明该 Hook 的应用场景及用法。
 
-然后你可以基于 [contribute_template](https://github.com/wetrial/hooks/tree/master/contribute_template) 来初始化一个 Hook。
+然后你可以基于已有 Hook 来初始化一个新的 Hook。
 
 ## Pull Request
 
@@ -33,9 +33,9 @@
 
 ## 开发流程
 
-在你 clone 代码并且使用 `npm install` 安装完依赖后，你还可以运行下面几个常用的命令：
+在你 clone 代码并且使用 `npm run init` 安装完依赖后，你还可以运行下面几个常用的命令：
 
-1. `npm start` 在本地运行 `@wetrial/hooks` 网站。
+1. `npm start` 在本地运行 `@umijs/hooks` 网站。
 
 2. `npm run test` 运行测试。
 
