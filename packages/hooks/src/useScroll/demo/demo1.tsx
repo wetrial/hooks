@@ -7,7 +7,7 @@
  */
 
 import React, { useRef } from 'react';
-import {useScroll} from '@umijs/hooks';
+import {useScroll} from '@wetrial/hooks';
 
 export default () => {
   const [scroll, ref] = useScroll<HTMLDivElement>();

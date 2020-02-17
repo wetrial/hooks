@@ -1,6 +1,6 @@
 {
   "name": "hooks",
-  "scope": "umijs",
+  "scope": "wetrial",
   "builds": [
     {
       "src": "now-build.sh",

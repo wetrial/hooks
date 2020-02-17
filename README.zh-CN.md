@@ -1,6 +1,6 @@
-[English](https://github.com/umijs/hooks/blob/master/README.md) | 简体中文
+[English](https://github.com/wetrial/hooks/blob/master/README.md) | 简体中文
 
-# @umijs/hooks
+# @wetrial/hooks
 
 React Hooks Library.
 
@@ -27,19 +27,19 @@ React Hooks Library.
 ## 📦 安装
 
 ```
-npm i @umijs/hooks --save
+npm i @wetrial/hooks --save
 ```
 
 ## 🔨使用
 
 ```
-import { useAsync } from '@umijs/hooks';
+import { useAsync } from '@wetrial/hooks';
 ```
 
 ## 🖥 开发
 
 ```
-$ git clone git@github.com:umijs/hooks.git
+$ git clone git@github.com:wetrial/hooks.git
 $ cd hooks
 $ npm run init
 $ npm start
@@ -48,18 +48,21 @@ $ npm start
 
 ## 🤝 贡献
 
-我们欢迎所有人参与共建，请参考[CONTRIBUTING.MD](https://github.com/umijs/hooks/blob/master/CONTRIBUTING.MD)
+我们欢迎所有人参与共建，请参考[CONTRIBUTING.MD](https://github.com/wetrial/hooks/blob/master/CONTRIBUTING.MD)
 
 ## 👥 讨论
 
-<img src="https://raw.githubusercontent.com/umijs/hooks/master/dingtalk.jpg" width="300" />
+<img src="https://raw.githubusercontent.com/wetrial/hooks/master/dingtalk.jpg" width="300" />
 
 ## ✅ License
 
-[MIT](https://github.com/umijs/umi/blob/master/LICENSE)
+[MIT](https://github.com/wetrial/umi/blob/master/LICENSE)
 
-[1]:	https://www.npmjs.com/package/@umijs/hooks
-[2]:	https://npmjs.org/package/@umijs/hooks
+[1]:	https://www.npmjs.com/package/@wetrial/hooks
+[2]:	https://npmjs.org/package/@wetrial/hooks
 
-[image-1]:	https://img.shields.io/npm/v/@umijs/hooks.svg?style=flat
-[image-2]:	https://img.shields.io/npm/dm/@umijs/hooks.svg?style=flat
+[image-1]:	https://img.shields.io/npm/v/@wetrial/hooks.svg?style=flat
+[image-2]:	https://img.shields.io/npm/dm/@wetrial/hooks.svg?style=flat
+
+基于  https://github.com/wetrial/hooks 改造
+> git remote add upstream git@github.com:wetrial/hooks.git

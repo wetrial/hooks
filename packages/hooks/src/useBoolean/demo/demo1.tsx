@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { Button, Switch } from 'antd';
-import { useBoolean } from '@umijs/hooks';
+import { useBoolean } from '@wetrial/hooks';
 
 export default () => {
   const { state, toggle, setTrue, setFalse } = useBoolean(true);

@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { Button, notification } from 'antd';
-import { useAPI } from '@umijs/hooks';
+import { useAPI } from '@wetrial/hooks';
 
 export default () => {
   const { run } = useAPI({

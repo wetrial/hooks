@@ -8,7 +8,7 @@
 
 import { Button, Spin } from 'antd';
 import React from 'react';
-import { useAPI } from '@umijs/hooks';
+import { useAPI } from '@wetrial/hooks';
 
 export default () => {
   const { data, loading, timer } = useAPI({

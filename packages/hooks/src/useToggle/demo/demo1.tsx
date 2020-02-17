@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { Button, Switch } from 'antd';
-import { useToggle } from '@umijs/hooks';
+import { useToggle } from '@wetrial/hooks';
 
 export default () => {
   const { state, toggle } = useToggle();

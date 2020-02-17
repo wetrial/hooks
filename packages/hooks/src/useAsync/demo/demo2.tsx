@@ -8,7 +8,7 @@
 
 import { Button, Spin } from 'antd';
 import React from 'react';
-import { useAsync } from '@umijs/hooks';
+import { useAsync } from '@wetrial/hooks';
 
 function getNumber() {
   return fetch('https://helloacm.com/api/random/?n=8&x=4').then(res => res.json());

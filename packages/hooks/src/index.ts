@@ -1,4 +1,4 @@
-import useRequest from '@umijs/use-request';
+import useRequest from '@wetrial/use-request';
 import useAntdTable from './useAntdTable';
 import useAPI, { configRequest } from './useAPI';
 import useAsync from './useAsync';

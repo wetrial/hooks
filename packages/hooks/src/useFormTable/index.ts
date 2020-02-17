@@ -1,4 +1,4 @@
-import useRequest from '@umijs/use-request';
+import useRequest from '@wetrial/use-request';
 import { useState, useCallback, useEffect } from 'react';
 import {
   CombineService,
@@ -7,7 +7,7 @@ import {
   PaginatedOptionsWithFormat,
   PaginatedFormatReturn,
   PaginatedResult
-} from '@umijs/use-request/lib/types';
+} from '@wetrial/use-request/lib/types';
 
 export {
   CombineService,

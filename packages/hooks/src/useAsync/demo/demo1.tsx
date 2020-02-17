@@ -6,7 +6,7 @@
  * desc.zh-CN: 组件加载时立即执行，并且 deps 变化后，会重新执行。
  */
 
-import { useAsync } from '@umijs/hooks';
+import { useAsync } from '@wetrial/hooks';
 import { Button, Spin } from 'antd';
 import React, { useState } from 'react';
 

@@ -8,7 +8,7 @@
 
 
 import React from 'react';
-import { configResponsive, useResponsive } from '@umijs/hooks';
+import { configResponsive, useResponsive } from '@wetrial/hooks';
 
 configResponsive({
   small: 0,

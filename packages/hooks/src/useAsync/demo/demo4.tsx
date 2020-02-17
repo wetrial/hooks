@@ -9,7 +9,7 @@
 import { Button, Form, Input, message } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import React from 'react';
-import { useAsync } from '@umijs/hooks';
+import { useAsync } from '@wetrial/hooks';
 
 const saveToServer = (data: string) =>
   new Promise<string>(resolve => {

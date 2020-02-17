@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { Select } from 'antd';
-import { useSearch } from '@umijs/hooks';
+import { useSearch } from '@wetrial/hooks';
 
 const { Option } = Select;
 

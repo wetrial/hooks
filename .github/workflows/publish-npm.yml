@@ -1,0 +1,23 @@
+# Do not use now
+name: publish-npm
+on:
+  release:
+    types: [published]
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@wetrial'
+      - name: Publish to NPMJS
+        run: npm install && npm run build && npm publish --access public
+        env:
+          CI: true
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

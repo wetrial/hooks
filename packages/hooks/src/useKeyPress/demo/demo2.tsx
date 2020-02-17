@@ -7,7 +7,7 @@
  */
 
 import React, { useState } from 'react';
-import {useKeyPress} from '@umijs/hooks';
+import {useKeyPress} from '@wetrial/hooks';
 
 export default () => {
   const [counter, setCounter] = useState(0);

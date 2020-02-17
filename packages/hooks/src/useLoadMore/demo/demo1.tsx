@@ -6,8 +6,8 @@
  * desc.zh-CN: 标准的加载更多例子
  */
 
-import { useLoadMore } from '@umijs/hooks';
-import { FnParams } from '@umijs/hooks/es/useLoadMore';
+import { useLoadMore } from '@wetrial/hooks';
+import { FnParams } from '@wetrial/hooks/es/useLoadMore';
 import { Avatar, Button, List } from 'antd';
 import React from 'react';
 
@@ -115,7 +115,7 @@ export default () => {
                 <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
               }
               title={<a>{item.title}</a>}
-              description="umijs/hooks is a react hooks library"
+              description="wetrial/hooks is a react hooks library"
             />
           </List.Item>
         )}

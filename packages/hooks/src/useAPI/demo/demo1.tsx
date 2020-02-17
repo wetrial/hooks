@@ -6,7 +6,7 @@
  * desc.zh-CN: 组件加载时立即执行
  */
 
-import { useAPI } from '@umijs/hooks';
+import { useAPI } from '@wetrial/hooks';
 import { Spin } from 'antd';
 import React from 'react';
 

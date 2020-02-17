@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 import { Button } from 'antd';
-import { useDebounceFn } from '@umijs/hooks';
+import { useDebounceFn } from '@wetrial/hooks';
 
 export default () => {
   const [value, setValue] = useState(0);

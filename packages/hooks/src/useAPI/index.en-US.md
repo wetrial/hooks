@@ -14,7 +14,7 @@ group:
 
 A custom hook that helps you sending and receiving data from server, using `umi-request` as default request library.
 Supporting manual-trigged fetch and fetch in interval.
-> This hook is meant to show a practice of wrapping useAsync. You may not need umi-request in your project. However, you can wrap your own useAPI accoding to [the way useAPI do it](https://github.com/umijs/hooks/blob/master/src/useAPI/index.ts). You can add request headers, transform data structures, or do some common error handling here. if our useAPI works in your project, you can also directly use it for sure.
+> This hook is meant to show a practice of wrapping useAsync. You may not need umi-request in your project. However, you can wrap your own useAPI accoding to [the way useAPI do it](https://github.com/wetrial/hooks/blob/master/src/useAPI/index.ts). You can add request headers, transform data structures, or do some common error handling here. if our useAPI works in your project, you can also directly use it for sure.
 
 ## Examples
 

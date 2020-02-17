@@ -8,7 +8,7 @@
 
 import { Input } from 'antd';
 import React, { useState } from 'react';
-import { useDebounce } from '@umijs/hooks';
+import { useDebounce } from '@wetrial/hooks';
 
 export default () => {
   const [value, setValue] = useState();

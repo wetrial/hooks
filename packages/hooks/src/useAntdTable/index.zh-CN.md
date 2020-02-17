@@ -130,7 +130,7 @@ interface ReturnValue<Item> {
 在日常工作中，我们每个网站的 Pagination 配置，接口返回数据结构都是一致的，如果我们在每次使用 `useAntdTable` 时都单独处理 Pagination 和 formatResult 肯定是不优雅的，所以我们建议您在自己的项目中基于 `useAntdTable` 再封装一次，例如下面的示例：
 
 ```javascript
-import { useAntdTable } from '@umijs/hooks'
+import { useAntdTable } from '@wetrial/hooks'
 
 export default (fn, deps = [], options = {}) => {
   const result = useAntdTable(fn, deps, {

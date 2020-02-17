@@ -6,8 +6,8 @@
  * desc.zh-CN: 简单的分页列表。
  */
 
-import { usePagination } from '@umijs/hooks';
-import { FnParams } from '@umijs/hooks/es/usePagination';
+import { usePagination } from '@wetrial/hooks';
+import { FnParams } from '@wetrial/hooks/es/usePagination';
 import { Avatar, Card, List } from 'antd';
 import { PaginationConfig } from 'antd/lib/pagination';
 import React from 'react';

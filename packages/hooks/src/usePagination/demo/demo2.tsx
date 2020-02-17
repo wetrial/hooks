@@ -9,8 +9,8 @@
 import { List, Pagination, Select } from 'antd';
 import { PaginationConfig } from 'antd/lib/pagination';
 import React, { useState } from 'react';
-import { usePagination } from '@umijs/hooks';
-import { FnParams } from '@umijs/hooks/es/usePagination';
+import { usePagination } from '@wetrial/hooks';
+import { FnParams } from '@wetrial/hooks/es/usePagination';
 
 interface Item {
   name: {

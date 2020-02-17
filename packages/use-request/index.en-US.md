@@ -167,7 +167,7 @@ Based on the basic useRequest, we can further encapsulate and implement more adv
 
 ### Integration Request Library
 
-If service is `string`,` object`, `(... args) => string | object`, we will automatically use [umi-request] (https://github.com/umijs/umi-request/blob /master/README_zh-CN.md) to send network requests. umi-request is a request library similar to axios and fetch.
+If service is `string`,` object`, `(... args) => string | object`, we will automatically use [umi-request] (https://github.com/wetrial/umi-request/blob /master/README_zh-CN.md) to send network requests. umi-request is a request library similar to axios and fetch.
 
 ```javascript
 // Usage 1
@@ -346,7 +346,7 @@ const {
 You can set global options at the outermost level of the project via `UseAPIProvider`.
 
 ```javascript
-import {UseAPIProvider} from '@umijs/use-request';
+import {UseAPIProvider} from '@wetrial/use-request';
 
 export function ({children})=>{
   return (

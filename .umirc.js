@@ -9,7 +9,7 @@ export default {
     },
   ]],
   doc: {
-    title: 'Umi Hooks',
+    title: 'Wetrial Hooks',
     include: ['packages/hooks/src', 'packages/use-request'],
     locales: [['en-US', 'English'], ['zh-CN', '中文']]
   },

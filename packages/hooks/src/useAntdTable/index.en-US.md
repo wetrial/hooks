@@ -129,7 +129,7 @@ interface ReturnValue<Item> {
 In production, the pagination configuration and the API data structure are usually identical in each project. If we config pagination and formatResult each time we use `useAntdTable`, it is definitely not elegant, so we recommend that you should repackaged a new hook based on `useAntdTable` in your project, for example:
 
 ```javascript
-import { useAntdTable } from '@umijs/hooks'
+import { useAntdTable } from '@wetrial/hooks'
 
 export default (fn, deps = [], options = {}) => {
   const result = useAntdTable(fn, deps, {

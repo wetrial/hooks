@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 import { Select, Input, AutoComplete } from 'antd';
-import { useSearch } from '@umijs/hooks';
+import { useSearch } from '@wetrial/hooks';
 
 const { Option } = Select;
 

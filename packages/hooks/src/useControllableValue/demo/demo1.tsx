@@ -8,7 +8,7 @@
 
 import { InputNumber } from 'antd';
 import React from 'react';
-import { useControllableValue } from '@umijs/hooks'
+import { useControllableValue } from '@wetrial/hooks'
 
 export default (props: any) => {
   const [state, setState] = useControllableValue<number>(props, {

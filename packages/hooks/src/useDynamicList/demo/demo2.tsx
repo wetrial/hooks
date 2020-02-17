@@ -9,7 +9,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Button } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
-import { useDynamicList } from '@umijs/hooks';
+import { useDynamicList } from '@wetrial/hooks';
 
 interface CardProps extends FormComponentProps {
   index: number;

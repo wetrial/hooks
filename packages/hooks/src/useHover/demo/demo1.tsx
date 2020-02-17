@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { useHover } from '@umijs/hooks';
+import { useHover } from '@wetrial/hooks';
 
 export default () => {
   const [isHovering, hoverRef] = useHover<HTMLDivElement>();

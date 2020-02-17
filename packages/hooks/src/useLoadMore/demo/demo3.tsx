@@ -8,8 +8,8 @@
 
 import { List, Button, Avatar, Select } from 'antd';
 import React, { useState } from 'react';
-import { useLoadMore } from '@umijs/hooks';
-import { FnParams } from '@umijs/hooks/es/useLoadMore';
+import { useLoadMore } from '@wetrial/hooks';
+import { FnParams } from '@wetrial/hooks/es/useLoadMore';
 
 const { Option } = Select;
 
@@ -127,7 +127,7 @@ export default () => {
                 <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
               }
               title={<a>{item.title}</a>}
-              description="umijs/hooks is a react hooks library"
+              description="wetrial/hooks is a react hooks library"
             />
           </List.Item>
         )}

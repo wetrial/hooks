@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import {useSize} from '@umijs/hooks';
+import {useSize} from '@wetrial/hooks';
 
 export default () => {
   const [state] = useSize(document.querySelector('body'));

@@ -163,11 +163,11 @@ const {
 
 ## 扩展用法
 
-基于基础的 useRequest，我们可以进一步封装，实现更高级的定制需求。当前 useRequest 内置了 `集成请求库`，`分页` 和 `加载更多` 三种场景。你可以参考代码，实现自己的封装。参考 [useRequest](https://github.com/umijs/hooks/blob/master/packages/use-request/src/useRequest.ts)、[usePaginated](https://github.com/umijs/hooks/blob/master/packages/use-request/src/usePaginated.ts)、[useLoadMore](https://github.com/umijs/hooks/blob/master/packages/use-request/src/useLoadMore.ts) 的实现。
+基于基础的 useRequest，我们可以进一步封装，实现更高级的定制需求。当前 useRequest 内置了 `集成请求库`，`分页` 和 `加载更多` 三种场景。你可以参考代码，实现自己的封装。参考 [useRequest](https://github.com/wetrial/hooks/blob/master/packages/use-request/src/useRequest.ts)、[usePaginated](https://github.com/wetrial/hooks/blob/master/packages/use-request/src/usePaginated.ts)、[useLoadMore](https://github.com/wetrial/hooks/blob/master/packages/use-request/src/useLoadMore.ts) 的实现。
 
 ### 集成请求库
 
-如果 service 是 `string` 、 `object` 、 `(...args)=> string|object`, 我们会自动使用 [umi-request](https://github.com/umijs/umi-request/blob/master/README_zh-CN.md) 来发送网络请求。umi-request 是类似 axios、fetch 的请求库。
+如果 service 是 `string` 、 `object` 、 `(...args)=> string|object`, 我们会自动使用 [umi-request](https://github.com/wetrial/umi-request/blob/master/README_zh-CN.md) 来发送网络请求。umi-request 是类似 axios、fetch 的请求库。
 
 ```javascript
 // 用法 1
@@ -346,7 +346,7 @@ const {
 你可以通过 `UseAPIProvider` 在项目的最外层设置全局 options。
 
 ```javascript
-import {UseAPIProvider} from '@umijs/use-request';
+import {UseAPIProvider} from '@wetrial/use-request';
 
 export function ({children})=>{
   return (
