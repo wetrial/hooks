@@ -1,6 +1,5 @@
 {
   "name": "@wetrial/hooks",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wetrial/hooks.git"
