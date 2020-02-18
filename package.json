@@ -1,7 +1,7 @@
 {
   "name": "@wetrial/hooks",
   "private": true,
-  "version": "0.10.18",
+  "version": "0.10.19",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wetrial/hooks.git"
