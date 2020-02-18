@@ -19,17 +19,7 @@
     "precommit": "father pre-commit",
     "build:doc": "father-doc build",
     "pub:doc": "now --prod",
-    "pub": "father publish",
-    "push":"git push origin master && git push origin --tags",
-    "patch": "cd ./packages/hooks && yarn patch && cd ./use-request && yarn patch",
-    "minor": "",
-    "major": "",
-    "patch:request": "",
-    "minor:request": "",
-    "major:request": "",
-    "patch:hooks": "",
-    "minor:hooks": "",
-    "major:hooks": ""
+    "pub": "father publish"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^2.0.1",

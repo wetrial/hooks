@@ -1,6 +1,6 @@
 {
   "name": "@wetrial/use-request",
-  "version": "0.10.7",
+  "version": "0.20.1",
   "description": "React Hooks for fetching, caching and updating asynchronous data",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -16,10 +16,7 @@
     "url": "git+https://github.com/wetrial/hooks.git"
   },
   "scripts": {
-    "compile": "tsc --declarationDir ./lib && tsc --declarationDir ./es",
-    "patch": "yarn version --patch",
-    "minor": "yarn version --minor",
-    "major": "yarn version --major"
+    "compile": "tsc --declarationDir ./lib && tsc --declarationDir ./es"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"

@@ -19,10 +19,7 @@
   "repository": "https://github.com/wetrial/hooks",
   "homepage": "https://github.com/wetrial/hooks",
   "scripts": {
-    "compile": "tsc --declarationDir lib && tsc --declarationDir es",
-    "patch": "yarn version --patch",
-    "minor": "yarn version --minor",
-    "major": "yarn version --major"
+    "compile": "tsc --declarationDir lib && tsc --declarationDir es"
   },
   "files": [
     "dist",
@@ -31,7 +28,7 @@
     "package.json"
   ],
   "dependencies": {
-    "@wetrial/use-request": "^0.0.3",
+    "@wetrial/use-request": "^0.20.1",
     "intersection-observer": "^0.7.0",
     "lodash.isequal": "^4.5.0",
     "pubsub-js": "^1.8.0",
