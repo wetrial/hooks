@@ -2,8 +2,10 @@ name: Node CI
 
 on:
   push:
-    branch:
-      - 'master'
+    branches:
+      - master
+    tags:
+      - 'v*'
 
 jobs:
   build:
