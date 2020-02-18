@@ -48,5 +48,6 @@
     "node": ">=8.0.0"
   },
   "license": "MIT",
-  "gitHead": "bc03f5098b994f378191f5d72da84efb911571ca"
+  "publishConfig": {"access": "public"},
+  "gitHead": "86284f11a46c716543aa44ea9e9a723e6fceb589"
 }
