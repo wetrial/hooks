@@ -1,9 +1,4 @@
 import useRequest from '@wetrial/use-request';
-import useAntdTable from './useAntdTable';
-import useAPI, { configRequest } from './useAPI';
-import useAsync from './useAsync';
-import useLoadMore from './useLoadMore';
-import useSearch from './useSearch';
 import useControllableValue from './useControllableValue';
 import useDynamicList from './useDynamicList';
 import useEventEmitter from './useEventEmitter';
@@ -14,7 +9,6 @@ import useLocalStorageState from './useLocalStorageState';
 import useSessionStorageState from './useSessionStorageState';
 import useUpdateEffect from './useUpdateEffect';
 import useUpdateLayoutEffect from './useUpdateLayoutEffect';
-import usePagination from './usePagination';
 import useBoolean from './useBoolean';
 import useToggle from './useToggle';
 import useSelections from './useSelections';
@@ -32,21 +26,17 @@ import useKeyPress from './useKeyPress';
 import useEventListener from './useEventListener';
 import useHover from './useHover';
 import useFormTable from './useFormTable';
+import { useSubscribe, PubSub } from './usePubSub';
 
-const useControlledValue: typeof useControllableValue = function (...args) {
-  console.warn(
-    'useControlledValue is deprecated and will be removed in the next major version. Please use useControllableValue instead.',
-  );
-  return useControllableValue(...args);
-};
+// const useControlledValue: typeof useControllableValue = function (...args) {
+//   console.warn(
+//     'useControlledValue is deprecated and will be removed in the next major version. Please use useControllableValue instead.',
+//   );
+//   return useControllableValue(...args);
+// };
 
 export {
-  useAntdTable,
-  useAPI,
-  useAsync,
-  useLoadMore,
-  useSearch,
-  useControlledValue,
+  // useControlledValue,
   useControllableValue,
   useDynamicList,
   useVirtualList,
@@ -56,10 +46,8 @@ export {
   useSessionStorageState,
   useSize,
   configResponsive,
-  configRequest,
   useUpdateEffect,
   useUpdateLayoutEffect,
-  usePagination,
   useBoolean,
   useToggle,
   useSelections,
@@ -77,5 +65,7 @@ export {
   useEventListener,
   useHover,
   useRequest,
-  useFormTable
+  useFormTable,
+  useSubscribe,
+  PubSub,
 };

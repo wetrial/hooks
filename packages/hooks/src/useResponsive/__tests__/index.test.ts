@@ -5,6 +5,7 @@ describe('useResponsive', () => {
   function changeWidth(width: number) {
     act(() => {
       (global as any).innerWidth = width;
+      (global as any).innerHeight = 700;
       (global as any).dispatchEvent(new Event('resize'));
     });
   }
@@ -23,6 +24,8 @@ describe('useResponsive', () => {
     changeWidth(1000);
     expect(hook.result.current).toMatchSnapshot();
     changeWidth(1200);
+    expect(hook.result.current).toMatchSnapshot();
+    changeWidth(1600);
     expect(hook.result.current).toMatchSnapshot();
   });
 });

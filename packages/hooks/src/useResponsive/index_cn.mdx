@@ -1,0 +1,77 @@
+---
+name: useResponsive
+route: /useResponsive
+menu: 'Other'
+edit: false
+sidebar: true
+---
+import JackBox from 'jackbox';
+import { Playground } from 'docz';
+import { useState, useMemo } from 'react';
+import { useResponsive, configResponsive } from './index';
+
+import Demo1 from './demo/demo1';
+import Demo1CodeTsx from '!raw-loader!./demo/demo1.tsx';
+import Demo1CodeJsx from '!raw-loader!./demo/demo1.jsx';
+
+
+# useResponsive
+
+获取响应式信息。
+
+## 代码演示
+
+### 在组件中获取响应式信息
+
+<JackBox jsCode={Demo1CodeJsx} tsCode={Demo1CodeTsx} demoName='在组件中获取响应式信息' description={
+  <div>
+    在组件中调用 useResponsive 可以获取并订阅浏览器窗口的响应式信息。
+  </div>
+}>
+  <Demo1/>
+</JackBox>
+
+## API
+
+```typescript
+interface ResponsiveInfo {
+  screen: string;
+  size: {
+    height: number;
+    width: number;
+  };
+}
+function useResponsive():ResponsiveInfo
+```
+
+### 配置
+
+默认的响应式配置和 bootstrap 是一致的：
+
+```javascript
+{
+   xs: {
+    min: -Infinity,
+    max: 576,
+  },
+  sm: {
+    min: 576,
+    max: 768,
+  },
+  md: {
+    min: 768,
+    max: 992,
+  },
+  lg: {
+    min: 992,
+    max: 1200,
+  },
+  xl: {
+    min: 1200,
+    max: 1600,
+  },
+  xxl: {
+    min: 1600,
+    max: +Infinity,
+  }
+}

@@ -9,17 +9,17 @@ group:
 
 # useFormTable
 
-封装了常用的 AntD [Form](https://ant.design/components/form-cn/) 与 AntD [Table](https://ant.design/components/table-cn/) 联动逻辑，并且同时支持 AntD V3 和 V4。
+封装了常用的 AntD [Form](https://ant.design/components/form-cn/) 与 AntD [Table](https://ant.design/components/table-cn/) 联动逻辑
 
 ## 代码演示
 
 ### Form 与 Table 联动
 
-<code src="./demo/demo1.tsx" />
+<code src="./demo/demo3.tsx" />
 
 ### 数据缓存
 
-<code src="./demo/demo2.tsx" />
+<!-- <code src="./demo/demo4.tsx" /> -->
 
 ## API
 

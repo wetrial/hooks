@@ -9,17 +9,17 @@ group:
 
 # useFormTable
 
-It encapsulates the common AntD [Form](https://ant.design/components/form-cn/) and AntD [Table](https://ant.design/components/table-cn/) linkage logic, and supports AntD V3 and V4 at the same time.
+It encapsulates the common AntD [Form](https://ant.design/components/form-cn/) and AntD [Table](https://ant.design/components/table-cn/) linkage logic
 
 ## Examples
 
 ### Form and Table data binding
 
-<code src="./demo/demo1.tsx" />
+<code src="./demo/demo3.tsx" />
 
 ### Data caching
 
-<code src="./demo/demo2.tsx" />
+<code src="./demo/demo4.tsx" />
 
 ## API
 

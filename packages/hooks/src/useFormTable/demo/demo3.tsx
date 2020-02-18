@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { Button, Col, Form, Input, Row, Table, Select } from 'antd';
-import { useFormTable } from '@wetrial/hooks'
+import { useFormTable } from '@wetrial/hooks';
 import { PaginatedParams } from '@wetrial/hooks/es/useFormTable';
 
 const { Option } = Select;

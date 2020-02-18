@@ -1,12 +1,11 @@
 import React from 'react';
-import { useResponsive } from '..';
+import { configResponsive, useResponsive } from '..';
 
-// configResponsive({
-//   small: 0,
-//   middle: 800,
-//   large: 1200,
-// });
-
+configResponsive({
+  small: 0,
+  middle: 800,
+  large: 1200,
+});
 export default function() {
   const { screen, size } = useResponsive();
   return (
