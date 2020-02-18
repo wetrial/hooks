@@ -37,5 +37,6 @@
   "devDependencies": {
     "@wetrial/hooks": "^1.6.1",
     "axios": "^0.19.2"
-  }
+  },
+  "gitHead": "386f059d463859dca3fdf78105ce670c6109a468"
 }
