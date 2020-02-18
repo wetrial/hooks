@@ -1,6 +1,7 @@
 {
   "name": "@wetrial/hooks",
   "private": true,
+  "version": "0.10.18",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wetrial/hooks.git"
@@ -19,7 +20,10 @@
     "precommit": "father pre-commit",
     "build:doc": "father-doc build",
     "pub:doc": "now --prod",
-    "pub": "father publish"
+    "pub": "father publish",
+    "patch": "yarn version --patch && git push origin master && git push origin --tags",
+    "minor": "yarn version --minor && git push origin master && git push origin --tags",
+    "major": "yarn version --major && git push origin master && git push origin --tags"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^2.0.1",
