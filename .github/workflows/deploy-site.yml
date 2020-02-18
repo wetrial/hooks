@@ -1,10 +1,10 @@
 # Do not use now
 name: deploy-site
+
 on:
-  release:
-    types: [published]
-    branches:
-      - master
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   build-and-deploy:
