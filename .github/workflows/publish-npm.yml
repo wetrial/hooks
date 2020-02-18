@@ -19,7 +19,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@wetrial'
       - name: Publish to NPMJS
-        run: npm install && npm run build && npm publish --access public
+        run: npm run init && npm run publish && npm publish --access public
         env:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
