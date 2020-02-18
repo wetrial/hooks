@@ -16,7 +16,10 @@
     "url": "git+https://github.com/wetrial/hooks.git"
   },
   "scripts": {
-    "compile": "tsc --declarationDir ./lib && tsc --declarationDir ./es"
+    "compile": "tsc --declarationDir ./lib && tsc --declarationDir ./es",
+    "patch": "yarn version --patch",
+    "minor": "yarn version --minor",
+    "major": "yarn version --major"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
@@ -38,5 +41,5 @@
     "@wetrial/hooks": "^1.6.1",
     "axios": "^0.19.2"
   },
-  "gitHead": "386f059d463859dca3fdf78105ce670c6109a468"
+  "gitHead": "bc03f5098b994f378191f5d72da84efb911571ca"
 }
