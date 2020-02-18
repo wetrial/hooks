@@ -1,6 +1,6 @@
 {
   "name": "@wetrial/use-request",
-  "version": "0.20.2",
+  "version": "0.20.3",
   "description": "React Hooks for fetching, caching and updating asynchronous data",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -19,7 +19,7 @@
     "compile": "tsc --declarationDir ./lib && tsc --declarationDir ./es"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
+    "access": "public"
   },
   "license": "MIT",
   "bugs": {
@@ -38,6 +38,5 @@
     "@wetrial/hooks": "^1.6.1",
     "axios": "^0.19.2"
   },
-  "publishConfig": {"access": "public"},
   "gitHead": "86284f11a46c716543aa44ea9e9a723e6fceb589"
 }

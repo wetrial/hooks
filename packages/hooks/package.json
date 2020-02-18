@@ -1,6 +1,6 @@
 {
   "name": "@wetrial/hooks",
-  "version": "0.10.28",
+  "version": "0.10.29",
   "description": "react hooks library",
   "keywords": [
     "wetrial hooks",
@@ -14,7 +14,7 @@
     "email": "1002275364@qq.com"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
+    "access": "public"
   },
   "repository": "https://github.com/wetrial/hooks",
   "homepage": "https://github.com/wetrial/hooks",
@@ -28,7 +28,7 @@
     "package.json"
   ],
   "dependencies": {
-    "@wetrial/use-request": "^0.20.2",
+    "@wetrial/use-request": "^0.20.3",
     "intersection-observer": "^0.7.0",
     "lodash.isequal": "^4.5.0",
     "pubsub-js": "^1.8.0",
@@ -48,6 +48,5 @@
     "node": ">=8.0.0"
   },
   "license": "MIT",
-  "publishConfig": {"access": "public"},
   "gitHead": "86284f11a46c716543aa44ea9e9a723e6fceb589"
 }
