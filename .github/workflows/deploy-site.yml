@@ -12,8 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-      - name: Deploy the site
-        uses: spankie/hugo-deploy-to-zeit@master
+      - name: deploy
+        uses: actions/zeit-now@master
+        with:
+          args: --prod
         env:
-          HUGO_VERSION: 0.59.1
           ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
