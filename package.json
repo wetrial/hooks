@@ -5,13 +5,13 @@
     "url": "git+https://github.com/wetrial/hooks.git"
   },
   "scripts": {
-    "init": "rm -rf node_modules && npm install && npm run clean && npm run bootstrap && npm run build",
-    "start": "npm run dev",
+    "init": "rimraf node_modules && yarn install && yarn  clean && yarn bootstrap && yarn run build",
+    "start": "yarn dev",
     "dev": "father-doc dev",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean --yes",
     "compile": "lerna run --scope @wetrial/use-request compile && lerna run --scope @wetrial/hooks compile",
-    "build": "node ./scripts/clean-old-build.js && father build && npm run compile && node ./scripts/build-wind-up.js",
+    "build": "node ./scripts/clean-old-build.js && father build && yarn compile && node ./scripts/build-wind-up.js",
     "test": "father test",
     "cov": "father test --coverage",
     "help": "father help",
@@ -41,6 +41,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-drag-listview": "^0.1.6",
+    "rimraf": "^3.0.2",
     "typescript": "^3.3.3",
     "umi-plugin-react": "^1.15.2",
     "umi-request": "^1.2.18"
