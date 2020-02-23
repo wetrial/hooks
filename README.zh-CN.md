@@ -8,21 +8,20 @@ React Hooks Library.
 
 ## 📚 文档
 
-* [English](https://hooks.umijs.org/)
-* [中文](https://hooks.umijs.org/zh-CN/)
+- [English](https://wetrial-hooks.now.sh/en-US/)
+- [中文](https://wetrial-hooks.now.sh/)
 
 ## ✨ 特性
 
-* 易学易用
-* 包含大量提炼自应用的高级 Hooks。
-* 包含丰富的基础 Hooks。
-* 使用 TypeScript 构建，提供完整的类型定义文件。
+- 易学易用
+- 包含大量提炼自应用的高级 Hooks。
+- 包含丰富的基础 Hooks。
+- 使用 TypeScript 构建，提供完整的类型定义文件。
 
 ## 📣 说明
 
 **你可以将 umi hooks 使用在任何地方，和任意组件库搭配使用。**
 虽然我们的代码示例都是基于 ant design 的，但是并不代表我们的 Hooks 只能和 ant design 配合使用。
-
 
 ## 📦 安装
 
@@ -30,7 +29,7 @@ React Hooks Library.
 npm i @wetrial/hooks --save
 ```
 
-## 🔨使用
+## 🔨 使用
 
 ```
 import { useAsync } from '@wetrial/hooks';
@@ -44,6 +43,7 @@ $ cd hooks
 $ npm run init
 $ npm start
 ```
+
 打开浏览器访问 http://127.0.0.1:8001
 
 ## 🤝 贡献
@@ -58,11 +58,11 @@ $ npm start
 
 [MIT](https://github.com/wetrial/umi/blob/master/LICENSE)
 
-[1]:	https://www.npmjs.com/package/@wetrial/hooks
-[2]:	https://npmjs.org/package/@wetrial/hooks
+[1]: https://www.npmjs.com/package/@wetrial/hooks
+[2]: https://npmjs.org/package/@wetrial/hooks
+[image-1]: https://img.shields.io/npm/v/@wetrial/hooks.svg?style=flat
+[image-2]: https://img.shields.io/npm/dm/@wetrial/hooks.svg?style=flat
 
-[image-1]:	https://img.shields.io/npm/v/@wetrial/hooks.svg?style=flat
-[image-2]:	https://img.shields.io/npm/dm/@wetrial/hooks.svg?style=flat
+基于 https://github.com/wetrial/hooks 改造
 
-基于  https://github.com/wetrial/hooks 改造
 > git remote add upstream git@github.com:wetrial/hooks.git

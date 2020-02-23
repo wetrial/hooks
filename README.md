@@ -8,15 +8,15 @@ React Hooks Library.
 
 ## 📚 Document
 
-* [English](https://hooks.umijs.org/)
-* [中文](https://hooks.umijs.org/zh-CN/)
+- [English](https://wetrial-hooks.now.sh/en-US/)
+- [中文](https://wetrial-hooks.now.sh/)
 
 ## ✨ Features
 
-* Easy to learn and use.
-* Contains a wealth of advanced Hooks that are refined from the app.
-* Contains a wealth of basic Hooks.
-* Written in TypeScript with predictable static types.
+- Easy to learn and use.
+- Contains a wealth of advanced Hooks that are refined from the app.
+- Contains a wealth of basic Hooks.
+- Written in TypeScript with predictable static types.
 
 ## 📣 Explain
 
@@ -43,6 +43,7 @@ $ cd hooks
 $ npm run init
 $ npm start
 ```
+
 Open your browser and visit http://127.0.0.1:8001 , see more at Development.
 
 ## 🤝 Contributing
@@ -57,13 +58,11 @@ We welcome all contributions, please read our [CONTRIBUTING.MD](https://github.c
 
 [MIT](https://github.com/wetrial/umi/blob/master/LICENSE)
 
+[1]: https://www.npmjs.com/package/@wetrial/hooks
+[2]: https://npmjs.org/package/@wetrial/hooks
+[image-1]: https://img.shields.io/npm/v/@wetrial/hooks.svg?style=flat
+[image-2]: https://img.shields.io/npm/dm/@wetrial/hooks.svg?style=flat
 
-[1]:	https://www.npmjs.com/package/@wetrial/hooks
-[2]:	https://npmjs.org/package/@wetrial/hooks
+base on https://github.com/wetrial/hooks
 
-[image-1]:	https://img.shields.io/npm/v/@wetrial/hooks.svg?style=flat
-[image-2]:	https://img.shields.io/npm/dm/@wetrial/hooks.svg?style=flat
-
-
-base on  https://github.com/wetrial/hooks
 > git remote add upstream git@github.com:wetrial/hooks.git

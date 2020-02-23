@@ -13,8 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: Deploy to Zeit
-        uses: amondnet/now-deployment@v1
+        uses: amondnet/now-deployment@v2
         with:
           github-token: ${{ secrets.GH_TOKEN }}
           zeit-token: ${{ secrets.ZEIT_TOKEN }}
+          now-org-id: ${{ secrets.NOW_ORG_ID }}
+          now-project-id: ${{ secrets.NOW_PROJECT_ID_ANGULAR }}
+          working-directory: ./dist
           now-args: '--prod'

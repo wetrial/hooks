@@ -1,6 +1,11 @@
 {
+  "version": 2,
   "name": "hooks",
   "scope": "wetrial",
+  "public": true,
+  "github": {
+    "enabled": false
+  },
   "builds": [
     {
       "src": "now-build.sh",
