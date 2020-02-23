@@ -2,8 +2,8 @@
 title: usePubSub
 group:
   title: Advanced
-  path: /usePubSub
-  order: 401
+  path: /advanced
+  order: 400
 ---
 
 # usePubSub

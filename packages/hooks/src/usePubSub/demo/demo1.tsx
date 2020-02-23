@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Input, Badge, Divider, Row, Col } from 'antd';
-import { PubSub, useSubscribe } from '../index';
+import { PubSub, useSubscribe } from '@wetrial/hooks';
 
 const eventType = {
   sendMessage: 'sendMessage',

@@ -11,6 +11,7 @@ export default {
     ],
   ],
   doc: {
+    mode: 'doc',
     logo: 'https://avatars2.githubusercontent.com/u/40448889?s=66&v=4',
     title: 'Wetrial Hooks',
     include: ['packages/hooks/src', 'packages/use-request'],

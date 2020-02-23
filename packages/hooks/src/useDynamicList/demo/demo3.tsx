@@ -7,8 +7,8 @@
  */
 
 import React, { useState } from 'react';
-import { Form, Button, Input, Icon, Table } from 'antd';
-import { FormComponentProps } from 'antd/lib/form';
+import { Form, Button, Input, Table } from 'antd';
+import { DragOutlined } from '@ant-design/icons';
 import ReactDragListView from 'react-drag-listview';
 import { useDynamicList } from '@wetrial/hooks';
 
@@ -18,13 +18,13 @@ interface Item {
   memo?: string;
 }
 
-export default Form.create()((props: FormComponentProps) => {
+export default () => {
+  const [form] = Form.useForm();
   const { list, remove, getKey, move, push, sortForm } = useDynamicList<Item>([
     { name: 'my bro', age: '23', memo: "he's my bro" },
     { name: 'my sis', age: '21', memo: "she's my sis" },
     {},
   ]);
-  const { getFieldDecorator, getFieldsValue } = props.form;
   const [result, setResult] = useState('');
 
   const columns = [
@@ -33,12 +33,12 @@ export default Form.create()((props: FormComponentProps) => {
       dataIndex: 'name',
       key: 'name',
       render: (text: string, row: Item, index: number) => (
-        <>
-          <Icon style={{ cursor: 'move', marginRight: 8 }} type="drag" />
-          {getFieldDecorator(`params[${getKey(index)}].name`, { initialValue: text })(
-            <Input style={{ width: 120, marginRight: 16 }} placeholder="name" />,
-          )}
-        </>
+        <Form.Item>
+          <DragOutlined style={{ cursor: 'move', marginRight: 8 }} />
+          <Form.Item noStyle name={['params', getKey(index), 'name']}>
+            <Input style={{ width: 120, marginRight: 16 }} placeholder="name" />
+          </Form.Item>
+        </Form.Item>
       ),
     },
     {
@@ -46,11 +46,9 @@ export default Form.create()((props: FormComponentProps) => {
       dataIndex: 'age',
       key: 'age',
       render: (text: string, row: Item, index: number) => (
-        <>
-          {getFieldDecorator(`params[${getKey(index)}].age`, { initialValue: text })(
-            <Input style={{ width: 120, marginRight: 16 }} placeholder="age" />,
-          )}
-        </>
+        <Form.Item name={['params', getKey(index), 'age']}>
+          <Input style={{ width: 120, marginRight: 16 }} placeholder="age" />
+        </Form.Item>
       ),
     },
     {
@@ -58,16 +56,16 @@ export default Form.create()((props: FormComponentProps) => {
       title: 'Memo',
       dataIndex: 'memo',
       render: (text: string, row: Item, index: number) => (
-        <>
-          {getFieldDecorator(`params[${getKey(index)}].memo`, { initialValue: text })(
-            <Input style={{ width: 300, marginRight: 16 }} placeholder="please input the memo" />,
-          )}
+        <Form.Item>
+          <Form.Item noStyle name={['params', getKey(index), 'memo']}>
+            <Input style={{ width: 300, marginRight: 16 }} placeholder="please input the memo" />
+          </Form.Item>
           <Button.Group>
             <Button type="danger" onClick={() => remove(index)}>
               Delete
             </Button>
           </Button.Group>
-        </>
+        </Form.Item>
       ),
     },
   ];
@@ -78,12 +76,14 @@ export default Form.create()((props: FormComponentProps) => {
         onDragEnd={(oldIndex: number, newIndex: number) => move(oldIndex, newIndex)}
         handleSelector={'i[aria-label="icon: drag"]'}
       >
-        <Table
-          columns={columns}
-          dataSource={list}
-          rowKey={(r: Item, index: number) => getKey(index).toString()}
-          pagination={false}
-        />
+        <Form initialValues={{ params: list }} form={form}>
+          <Table
+            columns={columns}
+            dataSource={list}
+            rowKey={(r: Item, index: number) => getKey(index).toString()}
+            pagination={false}
+          />
+        </Form>
       </ReactDragListView>
       <Button
         style={{ marginTop: 8 }}
@@ -96,11 +96,11 @@ export default Form.create()((props: FormComponentProps) => {
       <Button
         type="primary"
         style={{ marginTop: 16 }}
-        onClick={() => setResult(JSON.stringify(sortForm(getFieldsValue().params), null, 2))}
+        onClick={() => setResult(JSON.stringify(sortForm(form.getFieldsValue().params), null, 2))}
       >
         Submit
       </Button>
       <div style={{ whiteSpace: 'pre' }}>{result && `content: ${result}`}</div>
     </>
   );
-});
+};

@@ -1,6 +1,5 @@
 {
   "name": "@wetrial/hooks",
-  "version": "1.10.9",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wetrial/hooks.git"
@@ -35,18 +34,15 @@
     "del": "^5.1.0",
     "enzyme": "^3.10.0",
     "father": "^2.13.3",
-    "father-doc": "^1.0.0-alpha.20",
+    "father-doc": "1.0.0-beta.3",
     "lerna": "^3.20.2",
     "mockjs": "^1.1.0",
-    "now": "^17.0.3",
+    "now": "^17.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-drag-listview": "^0.1.6",
     "typescript": "^3.3.3",
     "umi-plugin-react": "^1.15.2",
     "umi-request": "^1.2.18"
-  },
-  "dependencies": {
-    "father-doc": "^1.0.0-alpha.20"
   }
 }

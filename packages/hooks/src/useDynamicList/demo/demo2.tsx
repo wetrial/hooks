@@ -8,10 +8,11 @@
 
 import React, { useState } from 'react';
 import { Form, Input, Button } from 'antd';
-import { FormComponentProps } from 'antd/lib/form';
 import { useDynamicList } from '@wetrial/hooks';
+import { FormInstance } from 'antd/es/form/util';
 
-interface CardProps extends FormComponentProps {
+interface CardProps {
+  form: FormInstance;
   index: number;
   list: any[];
   name: string;
@@ -22,21 +23,19 @@ const Card = (props: CardProps) => {
 
   return (
     <div style={{ border: '1px solid #e8e8e8', padding: 16, marginBottom: 16 }}>
-      <Form.Item label="Group Name">
-        {props.form.getFieldDecorator(`params[${props.index}].groupName`, {
-          initialValue: props.name,
-        })(<Input placeholder="Please enter group name" />)}
+      <Form.Item label="Group Name" name={['params', props.index, 'name']}>
+        <Input placeholder="Please enter group name" />
       </Form.Item>
 
       <Form.Item label="frequency">
         {list.map((ele, index) => (
           <div style={{ marginBottom: 16 }} key={getKey(index)}>
-            {props.form.getFieldDecorator(`params[${props.index}].ad[${getKey(index)}].name`, {
-              initialValue: ele.name,
-            })(<Input placeholder="Please enter the advertisement name" addonBefore="name：" />)}
-            {props.form.getFieldDecorator(`params[${props.index}].ad[${getKey(index)}].frequency`, {
-              initialValue: ele.value,
-            })(<Input placeholder="Please entery the frequency" addonAfter="times/day" />)}
+            <Form.Item name={['params', props.index, 'list', getKey(index), 'name']}>
+              <Input placeholder="Please enter the advertisement name" addonBefore="name：" />
+            </Form.Item>
+            <Form.Item name={['params', props.index, 'list', getKey(index), 'value']}>
+              <Input placeholder="Please entery the frequency" addonAfter="times/day" />
+            </Form.Item>
           </div>
         ))}
       </Form.Item>
@@ -49,31 +48,37 @@ const Card = (props: CardProps) => {
 
 interface ListItem {
   name: string;
-  list: Array<{ name: string; value: number }>;
+  list: { name: string; value: number }[];
 }
 
-export default Form.create()((props: FormComponentProps) => {
+export default () => {
+  const [form] = Form.useForm();
   const [result, setResult] = useState('');
 
   const { list, push, getKey, sortForm } = useDynamicList<ListItem>([
     {
       name: 'Group 1',
-      list: [{ name: 'ad1', value: 2 }, { name: 'ad2', value: 1 }],
+      list: [
+        { name: 'ad1', value: 1 },
+        { name: 'ad2', value: 2 },
+      ],
     },
   ]);
 
   return (
     <div style={{ width: 800, margin: 'auto', display: 'flex' }}>
       <div style={{ width: 400, marginRight: 16 }}>
-        {list.map((ele, index) => (
-          <Card
-            form={props.form}
-            key={getKey(index)}
-            list={ele.list}
-            name={ele.name}
-            index={getKey(index)}
-          />
-        ))}
+        <Form initialValues={{ params: list }} form={form}>
+          {list.map((ele, index) => (
+            <Card
+              form={form}
+              key={getKey(index)}
+              list={ele.list}
+              name={ele.name}
+              index={getKey(index)}
+            />
+          ))}
+        </Form>
         <Button style={{ marginTop: 16 }} block onClick={() => push({} as ListItem)}>
           Add Group
         </Button>
@@ -81,8 +86,8 @@ export default Form.create()((props: FormComponentProps) => {
       <div>
         <Button
           onClick={() => {
-            const res = props.form.getFieldsValue().params;
-            const sortedResult = sortForm(res);
+            const formData = form.getFieldsValue();
+            const sortedResult = sortForm(formData.params);
             setResult(JSON.stringify(sortedResult, null, 2));
           }}
         >
@@ -94,4 +99,4 @@ export default Form.create()((props: FormComponentProps) => {
       </div>
     </div>
   );
-});
+};

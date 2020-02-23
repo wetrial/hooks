@@ -41,6 +41,7 @@
   "devDependencies": {
     "@types/pubsub-js": "^1.5.18",
     "antd": "4.0.0-rc.4",
+    "@ant-design/icons": "4.0.0-alpha.19",
     "react-drag-listview": "^0.1.6",
     "umi-request": "^1.0.8"
   },

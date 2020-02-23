@@ -7,38 +7,32 @@
  */
 
 import React, { useState } from 'react';
-import { Form, Button, Input, Icon } from 'antd';
-import { FormComponentProps } from 'antd/lib/form';
-import { useDynamicList } from '@wetrial/hooks'
+import { Form, Button, Input } from 'antd';
+import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import { useDynamicList } from '@wetrial/hooks';
 
-export default Form.create()((props: FormComponentProps) => {
+export default () => {
+  const [form] = Form.useForm();
   const { list, remove, getKey, push } = useDynamicList(['David', 'Jack']);
-  const { getFieldDecorator, validateFields } = props.form;
-
+  const initialValues = {
+    names: list,
+  };
   const [result, setResult] = useState('');
 
-  const Row = (index: number, item: any) => (
-    <Form.Item key={getKey(index)}>
-      {getFieldDecorator(`names[${getKey(index)}]`, {
-        initialValue: item,
-        rules: [
-          {
-            required: true,
-            message: 'required',
-          },
-        ],
-      })(<Input style={{ width: 300 }} placeholder="Please enter your name" />)}
+  const Row = (index: number) => (
+    <Form.Item>
+      <Form.Item noStyle name={['names', getKey(index)]}>
+        <Input style={{ width: 300 }} placeholder="Please enter your name" />
+      </Form.Item>
       {list.length > 1 && (
-        <Icon
-          type="minus-circle-o"
+        <MinusCircleOutlined
           style={{ marginLeft: 8 }}
           onClick={() => {
             remove(index);
           }}
         />
       )}
-      <Icon
-        type="plus-circle-o"
+      <PlusCircleOutlined
         style={{ marginLeft: 8 }}
         onClick={() => {
           push('');
@@ -49,15 +43,15 @@ export default Form.create()((props: FormComponentProps) => {
 
   return (
     <>
-      <Form>{list.map((ele, index) => Row(index, ele))}</Form>
+      <Form initialValues={initialValues} form={form}>
+        {list.map((ele, index) => Row(index))}
+      </Form>
       <Button
         style={{ marginTop: 8 }}
         type="primary"
         onClick={() =>
-          validateFields((err, val) => {
-            if (!err) {
-              setResult(JSON.stringify((val || {}).names.filter((e: string) => !!e)));
-            }
+          form.validateFields().then(val => {
+            setResult(JSON.stringify(val || {}));
           })
         }
       >
@@ -66,4 +60,4 @@ export default Form.create()((props: FormComponentProps) => {
       <div>{result}</div>
     </>
   );
-});
+};
