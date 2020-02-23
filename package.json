@@ -6,7 +6,7 @@
     "url": "git+https://github.com/wetrial/hooks.git"
   },
   "scripts": {
-    "init": "rimraf node_modules && yarn install && yarn  clean && yarn bootstrap && yarn run build",
+    "init": "yarn install && yarn  clean && yarn bootstrap && yarn run build",
     "start": "yarn dev",
     "dev": "father-doc dev",
     "bootstrap": "lerna bootstrap",
@@ -42,7 +42,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-drag-listview": "^0.1.6",
-    "rimraf": "^3.0.2",
     "typescript": "^3.3.3",
     "umi-plugin-react": "^1.15.2",
     "umi-request": "^1.2.18"
