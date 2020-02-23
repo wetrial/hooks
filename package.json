@@ -1,5 +1,6 @@
 {
   "name": "@wetrial/hooks",
+  "version": "1.1.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wetrial/hooks.git"
@@ -45,6 +46,5 @@
     "typescript": "^3.3.3",
     "umi-plugin-react": "^1.15.2",
     "umi-request": "^1.2.18"
-  },
-  "version": "0.0.2"
+  }
 }
