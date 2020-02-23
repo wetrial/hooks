@@ -46,5 +46,5 @@
     "umi-plugin-react": "^1.15.2",
     "umi-request": "^1.2.18"
   },
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
