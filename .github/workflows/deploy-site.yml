@@ -12,9 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-      - name: deploy
+      - name: Deploy to Zeit
         uses: amondnet/now-deployment@v1
         with:
-          args: --prod
-        env:
-          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
+          github-token: ${{ secrets.GH_TOKEN }}
+          zeit-token: ${{ secrets.ZEIT_TOKEN }}
+          now-args: '--prod'
