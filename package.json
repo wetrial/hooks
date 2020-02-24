@@ -6,13 +6,13 @@
     "url": "git+https://github.com/wetrial/hooks.git"
   },
   "scripts": {
-    "init": "yarn install && yarn clean && yarn bootstrap && yarn run build",
-    "start": "yarn dev",
+    "init": "rm -rf node_modules && npm run install && npm run clean && npm run bootstrap && npm run build",
+    "start": "npm run dev",
     "dev": "father-doc dev",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean --yes",
     "compile": "lerna run --scope @wetrial/use-request compile && lerna run --scope @wetrial/hooks compile",
-    "build": "node ./scripts/clean-old-build.js && father build && yarn compile && node ./scripts/build-wind-up.js",
+    "build": "node ./scripts/clean-old-build.js && father build && npm run compile && node ./scripts/build-wind-up.js",
     "test": "father test",
     "cov": "father test --coverage",
     "help": "father help",
@@ -20,9 +20,9 @@
     "build:doc": "father-doc build",
     "pub:doc": "now --prod",
     "pub": "father publish",
-    "patch": "yarn version --patch && git push origin master && git push origin --tags",
-    "minor": "yarn version --minor && git push origin master && git push origin --tags",
-    "major": "yarn version --major && git push origin master && git push origin --tags"
+    "patch": "npm version --patch && git push origin master && git push origin --tags",
+    "minor": "npm version --minor && git push origin master && git push origin --tags",
+    "major": "npm version --major && git push origin master && git push origin --tags"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^2.0.1",
