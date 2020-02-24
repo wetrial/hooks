@@ -6,7 +6,7 @@
     "url": "git+https://github.com/wetrial/hooks.git"
   },
   "scripts": {
-    "init": "yarn install && yarn  clean && yarn bootstrap && yarn run build",
+    "init": "yarn install && yarn clean && yarn bootstrap && yarn run build",
     "start": "yarn dev",
     "dev": "father-doc dev",
     "bootstrap": "lerna bootstrap",

@@ -12,12 +12,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-      - name: Deploy to Zeit
-        uses: amondnet/now-deployment@v2
+      - name: Build
+        run: |
+          yarn run init
+          yarn bootstrap
+          yarn build:doc
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          github-token: ${{ secrets.GH_TOKEN }}
-          zeit-token: ${{ secrets.ZEIT_TOKEN }}
-          now-org-id: ${{ secrets.NOW_ORG_ID }}
-          now-project-id: ${{ secrets.NOW_PROJECT_ID_ANGULAR }}
-          working-directory: ./dist
-          now-args: '--prod'
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist
