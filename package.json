@@ -6,7 +6,7 @@
     "url": "git+https://github.com/wetrial/hooks.git"
   },
   "scripts": {
-    "init": "rm -rf node_modules && npm run install && npm run clean && npm run bootstrap && npm run build",
+    "init": "rm -rf node_modules && npm install && npm run clean && npm run bootstrap && npm run build",
     "start": "npm run dev",
     "dev": "father-doc dev",
     "bootstrap": "lerna bootstrap",
