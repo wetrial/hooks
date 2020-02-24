@@ -20,9 +20,9 @@
     "build:doc": "father-doc build",
     "pub:doc": "now --prod",
     "pub": "father publish",
-    "patch": "npm run version --patch && git push origin master && git push origin --tags",
-    "minor": "npm run version --minor && git push origin master && git push origin --tags",
-    "major": "npm run version --major && git push origin master && git push origin --tags"
+    "patch": "npm version --patch && git push origin master && git push origin --tags",
+    "minor": "npm version --minor && git push origin master && git push origin --tags",
+    "major": "npm version --major && git push origin master && git push origin --tags"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^2.0.1",
