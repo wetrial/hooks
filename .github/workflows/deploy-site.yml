@@ -15,7 +15,6 @@ jobs:
       - name: Build
         run: |
           yarn run init
-          yarn bootstrap
           yarn build:doc
 
       - name: Deploy
