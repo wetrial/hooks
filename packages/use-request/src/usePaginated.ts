@@ -31,7 +31,7 @@ function usePaginated<R, Item, U extends Item = any>(
     }
   }, []);
 
-  const { data, params, run, loading, ...rest } = useAsync(service, {
+  const { data = {} as any, params, run, loading, ...rest } = useAsync(service, {
     ...(restOptions as any),
     defaultParams: [
       {
