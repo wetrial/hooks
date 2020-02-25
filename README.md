@@ -48,13 +48,9 @@ $ npm start
 
 我们欢迎所有人参与共建，请参考[CONTRIBUTING.MD](https://github.com/wetrial/hooks/blob/master/CONTRIBUTING.MD)
 
-## 👥 讨论
-
-<img src="https://raw.githubusercontent.com/wetrial/hooks/master/dingtalk.jpg" width="300" />
-
 ## ✅ License
 
-[MIT](https://github.com/wetrial/umi/blob/master/LICENSE)
+[MIT](https://github.com/wetrial/hooks/blob/master/LICENSE)
 
 [1]: https://www.npmjs.com/package/@wetrial/hooks
 [2]: https://npmjs.org/package/@wetrial/hooks
