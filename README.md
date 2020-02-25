@@ -1,41 +1,39 @@
-English | [简体中文](https://github.com/wetrial/hooks/blob/master/README.zh-CN.md)
-
 # @wetrial/hooks
 
 React Hooks Library.
 
 [![NPM version][image-1]][1] [![NPM downloads][image-2]][2]
 
-## 📚 Document
+## 📚 文档
 
 - [English](https://wetrial-hooks.now.sh/en-US/)
 - [中文](https://wetrial-hooks.now.sh/)
 
-## ✨ Features
+## ✨ 特性
 
-- Easy to learn and use.
-- Contains a wealth of advanced Hooks that are refined from the app.
-- Contains a wealth of basic Hooks.
-- Written in TypeScript with predictable static types.
+- 易学易用
+- 包含大量提炼自应用的高级 Hooks。
+- 包含丰富的基础 Hooks。
+- 使用 TypeScript 构建，提供完整的类型定义文件。
 
-## 📣 Explain
+## 📣 说明
 
-**You can use umi hooks anywhere, with any component library.**
-Although our examples are based on ant design, it does not mean that our Hooks can only be used with ant design.
+**你可以将 umi hooks 使用在任何地方，和任意组件库搭配使用。**
+虽然我们的代码示例都是基于 ant design 的，但是并不代表我们的 Hooks 只能和 ant design 配合使用。
 
-## 📦 Install
+## 📦 安装
 
 ```
 npm i @wetrial/hooks --save
 ```
 
-## 🔨 Usage
+## 🔨 使用
 
 ```
 import { useAsync } from '@wetrial/hooks';
 ```
 
-## 🖥 Development
+## 🖥 开发
 
 ```
 $ git clone git@github.com:wetrial/hooks.git
@@ -44,13 +42,13 @@ $ npm run init
 $ npm start
 ```
 
-Open your browser and visit http://127.0.0.1:8001 , see more at Development.
+打开浏览器访问 http://127.0.0.1:8001
 
-## 🤝 Contributing
+## 🤝 贡献
 
-We welcome all contributions, please read our [CONTRIBUTING.MD](https://github.com/wetrial/hooks/blob/master/CONTRIBUTING.MD) first, let's build a better hooks library together.
+我们欢迎所有人参与共建，请参考[CONTRIBUTING.MD](https://github.com/wetrial/hooks/blob/master/CONTRIBUTING.MD)
 
-## 👥 Discuss
+## 👥 讨论
 
 <img src="https://raw.githubusercontent.com/wetrial/hooks/master/dingtalk.jpg" width="300" />
 
@@ -63,6 +61,6 @@ We welcome all contributions, please read our [CONTRIBUTING.MD](https://github.c
 [image-1]: https://img.shields.io/npm/v/@wetrial/hooks.svg?style=flat
 [image-2]: https://img.shields.io/npm/dm/@wetrial/hooks.svg?style=flat
 
-base on https://github.com/wetrial/hooks
+基于 [https://github.com/umijs/hooks](umijs/hooks) 改造
 
-> git remote add upstream git@github.com:wetrial/hooks.git
+> git remote add upstream git@github.com:umijs/hooks.git
