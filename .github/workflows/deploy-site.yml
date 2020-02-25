@@ -1,6 +1,5 @@
 # Do not use now
-name: deploy-site
-
+name: Deploy Doc Site
 on:
   push:
     tags:
@@ -12,14 +11,33 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-      - name: Build
-        run: |
-          npm run init
-          npm run build:doc
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: deploy
+        uses: amondnet/now-deployment@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: dist
+          now-args: '--prod'
+          zeit-token: ${{ secrets.ZEIT_TOKEN }}
+# # Do not use now
+# name: deploy-site
+
+# on:
+#   push:
+#     tags:
+#       - 'v*'
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@master
+#       - name: Build
+#         run: |
+#           npm run init
+#           npm run build:doc
+
+#       - name: Deploy
+#         uses: JamesIves/github-pages-deploy-action@releases/v3
+#         with:
+#           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+#           BRANCH: gh-pages
+#           FOLDER: dist
