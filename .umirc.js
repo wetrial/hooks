@@ -1,5 +1,6 @@
 export default {
   hash: true,
+  base: 'hooks',
   extraBabelPlugins: [
     [
       'babel-plugin-import',
