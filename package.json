@@ -8,7 +8,7 @@
   "scripts": {
     "init": "rm -rf node_modules && npm install && npm run clean && npm run bootstrap && npm run build",
     "start": "npm run dev",
-    "dev": "father-doc dev",
+    "dev": "cross-env REACT_APP_ENV=dev father-doc dev",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean --yes",
     "compile": "lerna run --scope @wetrial/use-request compile && lerna run --scope @wetrial/hooks compile",
@@ -44,6 +44,7 @@
     "react-drag-listview": "^0.1.6",
     "typescript": "^3.8.2",
     "umi-plugin-react": "^1.15.2",
-    "umi-request": "^1.2.18"
+    "umi-request": "^1.2.18",
+    "cross-env": "^7.0.0"
   }
 }
