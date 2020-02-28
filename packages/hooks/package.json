@@ -48,6 +48,5 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "license": "MIT",
-  "gitHead": "86284f11a46c716543aa44ea9e9a723e6fceb589"
+  "license": "MIT"
 }
