@@ -1,5 +1,5 @@
 import React from 'react';
-import { useResponsive } from '..';
+import { useResponsive } from '@wetrial/hooks';
 
 // configResponsive({
 //   small: 0,

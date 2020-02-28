@@ -13,7 +13,7 @@ interface Actions<K> extends StableActions<K> {
 function useSet<K>(initialValue?: Iterable<K>): [Set<K>, Actions<K>] {
   const initialSet = useMemo<Set<K>>(
     () => (initialValue === undefined ? new Set() : new Set(initialValue)) as Set<K>,
-    [initialValue]
+    [initialValue],
   );
   const [set, setSet] = useState(initialSet);
 
@@ -23,7 +23,7 @@ function useSet<K>(initialValue?: Iterable<K>): [Set<K>, Actions<K>] {
       remove: key => setSet(prevSet => new Set(Array.from(prevSet).filter(i => i !== key))),
       reset: () => setSet(initialSet),
     }),
-    [setSet]
+    [setSet],
   );
 
   const utils = {
@@ -32,6 +32,6 @@ function useSet<K>(initialValue?: Iterable<K>): [Set<K>, Actions<K>] {
   } as Actions<K>;
 
   return [set, utils];
-};
+}
 
 export default useSet;
