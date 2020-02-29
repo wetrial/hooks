@@ -19,7 +19,7 @@ group:
 
 ### 数据缓存
 
-<!-- <code src="./demo/demo4.tsx" /> -->
+<code src="./demo/demo4.tsx" />
 
 ## API
 

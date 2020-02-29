@@ -26,7 +26,7 @@ import useKeyPress from './useKeyPress';
 import useEventListener from './useEventListener';
 import useHover from './useHover';
 import useUnmount from './useUnmount';
-import useFormTable from './useFormTable';
+import useFormTable, { activeCache } from './useFormTable';
 import { useSubscribe, PubSub } from './usePubSub';
 import useSet from './useSet';
 
@@ -72,4 +72,5 @@ export {
   useSet,
   useSubscribe,
   PubSub,
+  activeCache,
 };

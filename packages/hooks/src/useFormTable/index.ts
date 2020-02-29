@@ -8,6 +8,8 @@ import {
   PaginatedFormatReturn,
   PaginatedResult,
 } from '@wetrial/use-request/lib/types';
+import useSessionStorageState from '../useSessionStorageState';
+import useUpdateEffect from '../useUpdateEffect';
 
 export {
   CombineService,
@@ -48,6 +50,9 @@ export interface OptionsWithFormat<R, Item, U>
   form: UseAntdTableFormUtils;
 }
 
+// 缓存前缀
+const TABLECACHEPREFIX = '__WETRIAL_USEFORMTABLE__';
+
 function useFormTable<R = any, Item = any, U extends Item = any>(
   service: CombineService<R, PaginatedParams>,
   options: OptionsWithFormat<R, Item, U>,
@@ -60,14 +65,18 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
   service: CombineService<any, any>,
   options: BaseOptions<U> | OptionsWithFormat<R, Item, U>,
 ): any {
-  const { form, ...restOptions } = options;
+  const { form, cacheKey, ...restOptions } = options;
+  const [storeCache, setStoreCache] = useSessionStorageState<any>(`${TABLECACHEPREFIX}${cacheKey}`);
+
   const result = useRequest(service, {
     ...restOptions,
     paginated: true,
     manual: true,
   });
 
-  const { params, run } = result;
+  let { params } = result;
+  const { run } = result;
+
   const cacheFormTableData = params[2] || ({} as any);
 
   // 优先从缓存中读
@@ -75,6 +84,16 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
 
   // 全量 form 数据，包括 simple 和 advance
   const [allFormData, setAllFormData] = useState<Store>(cacheFormTableData.allFormData || {});
+
+  useUpdateEffect(() => {
+    if (cacheKey) {
+      setStoreCache({
+        pagination: params[0] || {},
+        type,
+        allFormData,
+      });
+    }
+  }, [params[0], type, allFormData]);
 
   // 获取当前展示的 form 字段值
   const getActivetFieldValues = useCallback((): Store => {
@@ -118,6 +137,31 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
       run(...params);
       return;
     }
+
+    // 使用缓存的情况
+    if (cacheKey && params.length === 0) {
+      /* 有缓存，恢复 */
+      const isRefresh =
+        window.performance &&
+        window.performance.navigation &&
+        (PerformanceNavigation.TYPE_RELOAD === window.performance.navigation.type ||
+          PerformanceNavigation.TYPE_BACK_FORWARD === window.performance.navigation.type);
+      if (storeCache && (storeCache.active || isRefresh)) {
+        params = [
+          storeCache.pagination || {},
+          storeCache.allFormData,
+          {
+            type: storeCache.type,
+            allFormData: storeCache.allFormData,
+          },
+        ];
+        setType(storeCache.type || type);
+        setAllFormData(storeCache.allFormData);
+        run(...params);
+        return;
+      }
+    }
+
     // 如果没有缓存，触发 submit
     if (!options.manual) {
       submit();
@@ -163,7 +207,6 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
     form.resetFields();
     submit();
   }, [form, submit]);
-
   return {
     ...result,
     search: {
@@ -183,7 +226,7 @@ export default useFormTable;
  * @param reset 重置分页信息或者用指定数据覆盖
  */
 export const activeCache = (key: string, reset: boolean | Store = false) => {
-  const cacheKey = `__paged__${key}`;
+  const cacheKey = `${TABLECACHEPREFIX}${key}`;
   if (sessionStorage) {
     const cache = sessionStorage.getItem(cacheKey);
     if (cache !== null) {

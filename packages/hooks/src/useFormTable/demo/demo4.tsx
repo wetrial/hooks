@@ -1,15 +1,15 @@
 /**
  * title: Data caching
- * desc: Form and Table data cache through cacheKey。This is an example of antd v3, see [link](href) for an example of antd v4.
+ * desc: Form and Table data cache through cacheKey
  *
  * title.zh-CN: 数据缓存
- * desc.zh-CN: 通过 cacheKey 可以实现 Form 和 Table 数据缓存。这是一个 antd v3 示例，antd v4 示例见 [链接](href)。
+ * desc.zh-CN: 通过 cacheKey 可以实现 Form 和 Table 搜索状态缓存(切换到其他页面，其他页面通过`activeCache`来激活指定key的缓存，这样当切换回改页面的时候，搜索状态任然保留)。
  */
 
-import { useFormTable } from '@wetrial/hooks'
+import { useFormTable } from '@wetrial/hooks';
 import { PaginatedParams } from '@wetrial/hooks/es/useFormTable';
 import { Button, Form, Input, Table } from 'antd';
-import React, { useState } from 'react';
+import React from 'react';
 
 interface Item {
   name: {
@@ -25,10 +25,9 @@ interface Result {
   list: Item[];
 }
 
-
-const getTableData = ({ current, pageSize }: PaginatedParams[0], formData): Promise<Result> => {
-  console.log(current, pageSize);
-  console.log('formData', formData);
+const getTableData = (pageInfo: PaginatedParams[0], formData): Promise<Result> => {
+  console.log(pageInfo, formData);
+  const { current, pageSize } = pageInfo;
   return fetch(`https://randomuser.me/api?results=55&page=${current}&size=${pageSize}`)
     .then(res => res.json())
     .then(res => ({
@@ -37,17 +36,17 @@ const getTableData = ({ current, pageSize }: PaginatedParams[0], formData): Prom
     }));
 };
 
-const AppList = () => {
+export default () => {
   const [form] = Form.useForm();
 
   // TODO filters and sorter
-  const { tableProps, params, search } = useFormTable(getTableData, {
+  const { tableProps, params, search, sorter } = useFormTable(getTableData, {
     defaultPageSize: 5,
     form,
-    cacheKey: 'tableProps',
+    cacheKey: 'antd/use-form-table',
   });
 
-  const { sorter = {}, filters = {} } = params[0] || ({} as any);
+  const { filters = {} } = params[0] || ({} as any);
   const { type, changeType, submit, reset } = search || {};
 
   const columns = [
@@ -68,7 +67,10 @@ const AppList = () => {
     {
       title: 'gender',
       dataIndex: 'gender',
-      filters: [{ text: 'male', value: 'male' }, { text: 'female', value: 'female' }],
+      filters: [
+        { text: 'male', value: 'male' },
+        { text: 'female', value: 'female' },
+      ],
       filteredValue: filters.gender,
     },
   ];
@@ -84,10 +86,10 @@ const AppList = () => {
           <>
             <Form.Item name="email">
               <Input placeholder="enter email" style={{ width: 140, marginRight: 16 }} />
-              </Form.Item>
+            </Form.Item>
             <Form.Item name="phone">
               <Input placeholder="enter phone" style={{ width: 140, marginRight: 16 }} />
-              </Form.Item>
+            </Form.Item>
           </>
         )}
         <Button type="primary" onClick={submit}>
@@ -105,29 +107,20 @@ const AppList = () => {
 
   return (
     <div>
+      <Button
+        type="danger"
+        onClick={() => {
+          window.g_history.push({
+            pathname: '/other',
+            hash: '#useformtable-数据缓存',
+          });
+        }}
+        style={{ marginBottom: 16 }}
+      >
+        切换到demo页面(再切换回来，搜索状态还在)
+      </Button>
       {searchFrom}
       <Table columns={columns} rowKey="email" {...tableProps} />
     </div>
   );
 };
-
-const Demo = () => {
-  const [show, setShow] = useState(true);
-
-  return (
-    <div>
-      <Button
-        type="danger"
-        onClick={() => {
-          setShow(!show);
-        }}
-        style={{ marginBottom: 16 }}
-      >
-        {show ? 'Click to destroy' : 'Click recovery'}
-      </Button>
-      {show && <AppList />}
-    </div>
-  );
-};
-
-export default Demo;
