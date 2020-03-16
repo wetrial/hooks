@@ -50,6 +50,10 @@ export interface OptionsWithFormat<R, Item, U>
   form: UseAntdTableFormUtils;
 }
 
+type TFormatResult = (data: any) => any;
+
+let formatResult: TFormatResult;
+
 // 缓存前缀
 const TABLECACHEPREFIX = '__WETRIAL_USEFORMTABLE__';
 
@@ -69,6 +73,7 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
   const [storeCache, setStoreCache] = useSessionStorageState<any>(`${TABLECACHEPREFIX}${cacheKey}`);
 
   const result = useRequest(service, {
+    formatResult,
     ...restOptions,
     paginated: true,
     manual: true,
@@ -249,4 +254,8 @@ export const activeCache = (key: string, reset: boolean | Store = false) => {
       sessionStorage.setItem(cacheKey, JSON.stringify(cacheData));
     }
   }
+};
+
+export const configUseFormTableFormatResult = (configFormatResult: TFormatResult) => {
+  formatResult = configFormatResult;
 };

@@ -26,7 +26,7 @@ import useKeyPress from './useKeyPress';
 import useEventListener from './useEventListener';
 import useHover from './useHover';
 import useUnmount from './useUnmount';
-import useFormTable, { activeCache } from './useFormTable';
+import useFormTable, { activeCache, configUseFormTableFormatResult } from './useFormTable';
 import { useSubscribe, PubSub } from './usePubSub';
 import useSet from './useSet';
 
@@ -73,4 +73,5 @@ export {
   useSubscribe,
   PubSub,
   activeCache,
+  configUseFormTableFormatResult,
 };
