@@ -44,7 +44,6 @@ export default () => {
   const { tableProps, search } = useFormTable(getTableData, {
     defaultPageSize: 5,
     form,
-    formatResult: data => data,
   });
 
   const { type, changeType, submit, reset } = search;
