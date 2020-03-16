@@ -44,6 +44,7 @@ export default () => {
     defaultPageSize: 5,
     form,
     cacheKey: 'antd/use-form-table',
+    formatResult: data => data,
   });
 
   const { filters = {} } = params[0] || ({} as any);
