@@ -1,0 +1,11 @@
+/yarn.lock
+/package-lock.json
+/dist
+/es
+/lib
+/.docz
+/node_modules
+/.eslintcache
+/yarn-error.log
+.umi
+.umi-production
