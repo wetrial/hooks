@@ -18,8 +18,8 @@ export default defineConfig({
   links: [{ rel: 'manifest', href: '/asset-manifest.json' }],
   hash: true,
   // history: 'hash',
-  base: '/component',
-  publicPath: '/component/',
+  base: '/hooks',
+  publicPath: '/hooks/',
   favicon: 'https://avatars2.githubusercontent.com/u/40448889?s=66&v=4',
   logo: 'https://avatars2.githubusercontent.com/u/40448889?s=66&v=4',
 
