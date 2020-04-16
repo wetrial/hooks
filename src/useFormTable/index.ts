@@ -1,6 +1,8 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable no-underscore-dangle */
+import useRequest from '@umijs/use-request';
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { useRequest, useSessionStorageState, useUpdateEffect, usePersistFn } from '@umijs/hooks';
 import {
   CombineService,
   PaginatedParams,
@@ -9,6 +11,13 @@ import {
   PaginatedFormatReturn,
   PaginatedResult,
 } from '@umijs/use-request/lib/types';
+import { useUpdateEffect, usePersistFn } from '@umijs/hooks';
+import useSessionStorageDestroyState from './extensions';
+
+type TFormatResult = (response: any) => any | undefined;
+let _formatResult: TFormatResult;
+// 缓存前缀
+const TABLECACHEPREFIX = '__WETRIAL_USEFORMTABLE__';
 
 export {
   CombineService,
@@ -42,19 +51,14 @@ export interface Result<Item> extends PaginatedResult<Item> {
 
 export interface BaseOptions<U> extends Omit<BasePaginatedOptions<U>, 'paginated'> {
   form?: UseAntdTableFormUtils;
+  defaultType: 'simple' | 'advance';
 }
 
 export interface OptionsWithFormat<R, Item, U>
   extends Omit<PaginatedOptionsWithFormat<R, Item, U>, 'paginated'> {
   form?: UseAntdTableFormUtils;
+  defaultType: 'simple' | 'advance';
 }
-
-type TFormatResult = (data: any) => any;
-
-let formatResult: TFormatResult;
-
-// 缓存前缀
-const TABLECACHEPREFIX = '__WETRIAL_USEFORMTABLE__';
 
 function useFormTable<R = any, Item = any, U extends Item = any>(
   service: CombineService<R, PaginatedParams>,
@@ -68,36 +72,46 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
   service: CombineService<any, any>,
   options: BaseOptions<U> | OptionsWithFormat<R, Item, U>,
 ): any {
-  const { form, refreshDeps = [], manual, cacheKey, ...restOptions } = options;
-  const [storeCache, setStoreCache] = useSessionStorageState<any>(`${TABLECACHEPREFIX}${cacheKey}`);
+  const [recordCache] = useSessionStorageDestroyState(
+    `${TABLECACHEPREFIX}${options.cacheKey}`,
+    (): any => {
+      return getSearchQuery();
+    },
+  );
+  const {
+    active,
+    defaultType: recordDefaultType = 'simple',
+    defaultParams: recordDefaultParams,
+  } = (recordCache || {}) as any;
+
+  const {
+    form,
+    refreshDeps = [],
+    manual,
+    defaultType = options.cacheKey && active ? recordDefaultType : 'simple',
+    defaultParams = options.cacheKey && active ? recordDefaultParams : undefined,
+    cacheKey,
+    ...restOptions
+  } = options;
 
   const result = useRequest(service, {
-    formatResult,
+    formatResult: _formatResult,
     ...restOptions,
-    paginated: true,
+    paginated: true as true,
     manual: true,
   });
 
-  let { params } = result;
-  const { run } = result;
+  const { params, run } = result;
 
   const cacheFormTableData = params[2] || ({} as any);
 
   // 优先从缓存中读
-  const [type, setType] = useState(cacheFormTableData.type || 'simple');
+  const [type, setType] = useState(cacheFormTableData.type || defaultType);
 
   // 全量 form 数据，包括 simple 和 advance
-  const [allFormData, setAllFormData] = useState<Store>(cacheFormTableData.allFormData || {});
-
-  useUpdateEffect(() => {
-    if (cacheKey) {
-      setStoreCache({
-        pagination: params[0] || {},
-        type,
-        allFormData,
-      });
-    }
-  }, [params[0], type, allFormData]);
+  const [allFormData, setAllFormData] = useState<Store>(
+    cacheFormTableData.allFormData || (defaultParams && defaultParams[1]) || {},
+  );
 
   // 获取当前展示的 form 字段值
   const getActivetFieldValues = useCallback((): Store => {
@@ -149,34 +163,10 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
       run(...params);
       return;
     }
-    // 使用缓存的情况
-    if (cacheKey && params.length === 0) {
-      /* 有缓存，恢复 */
-      const isRefresh =
-        window.performance &&
-        window.performance.navigation &&
-        (PerformanceNavigation.TYPE_RELOAD === window.performance.navigation.type ||
-          PerformanceNavigation.TYPE_BACK_FORWARD === window.performance.navigation.type);
-      if (storeCache && (storeCache.active || isRefresh)) {
-        params = [
-          storeCache.pagination || {},
-          storeCache.allFormData,
-          {
-            type: storeCache.type,
-            allFormData: storeCache.allFormData,
-          },
-        ];
-        setType(storeCache.type || type);
-        setAllFormData(storeCache.allFormData);
-        run(...params);
-        return;
-      }
-    }
 
     // 如果没有缓存，触发 submit
     if (!manual) {
-      // eslint-disable-next-line
-      submit();
+      submit(defaultParams);
     }
   }, []);
 
@@ -189,15 +179,22 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
   }, [type, allFormData, getActivetFieldValues]);
 
   const submit = useCallback(
-    (e?: any) => {
-      if (e?.preventDefault) {
-        e.preventDefault();
-      }
+    (initParams?: any) => {
       setTimeout(() => {
         const activeFormData = getActivetFieldValues();
         // 记录全量数据
         const _allFormData = { ...allFormData, ...activeFormData };
         setAllFormData(_allFormData);
+
+        // has defaultParams
+        if (initParams) {
+          run(initParams[0], activeFormData, {
+            allFormData: _allFormData,
+            type,
+          });
+          return;
+        }
+
         run(
           {
             pageSize: options.defaultPageSize || 10,
@@ -224,6 +221,31 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
 
   const resetPersistFn = usePersistFn(reset);
 
+  const getSearchQuery = () => {
+    const {
+      tableProps: { pagination },
+    } = result;
+    const { sorter } = params[0] || ({} as any);
+    return {
+      active: false,
+      defaultType: type,
+      defaultParams: [
+        {
+          current: pagination.current,
+          pageSize: pagination.pageSize,
+          sorter: sorter
+            ? {
+                order: sorter.order,
+                field: sorter.field,
+              }
+            : undefined,
+          // filters,
+        },
+        allFormData,
+      ],
+    };
+  };
+
   // refreshDeps 变化，reset。
   useUpdateEffect(() => {
     if (!manual) {
@@ -234,7 +256,9 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
   return {
     ...result,
     search: {
-      submit,
+      submit: () => {
+        submit();
+      },
       type,
       changeType,
       reset,
@@ -244,37 +268,36 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
 
 export default useFormTable;
 
-/**
- * 激活缓存
- * @param key 页面缓存的key
- * @param reset 重置分页信息或者用指定数据覆盖
- */
-export const activeCache = (key: string, reset: boolean | Store = false) => {
-  const cacheKey = `${TABLECACHEPREFIX}${key}`;
+export const activeCache = (key: string) => {
   if (sessionStorage) {
+    const cacheKey = `${TABLECACHEPREFIX}${key}`;
     const cache = sessionStorage.getItem(cacheKey);
     if (cache !== null) {
-      let cacheData = JSON.parse(cache);
-      cacheData.active = true;
-      if (reset) {
-        if (typeof reset === 'boolean') {
-          delete cacheData._count;
-          delete cacheData.pageSize;
-          cacheData = {
-            ...cacheData,
-            current: 1,
-            sorter: {},
-            // _count: 1,
-          };
-        } else {
-          cacheData = { ...cacheData, ...reset };
-        }
-      }
-      sessionStorage.setItem(cacheKey, JSON.stringify(cacheData));
+      const cacheData = JSON.parse(cache);
+      // if (reset) {
+      //   if (typeof reset === 'boolean') {
+      //     delete cacheData.pageSize;
+      //     cacheData = {
+      //       ...cacheData,
+      //       current: 1,
+      //       sorter: {},
+      //       // _count: 1,
+      //     };
+      //   } else {
+      //     cacheData = { ...cacheData, ...reset };
+      //   }
+      // }
+      sessionStorage.setItem(
+        cacheKey,
+        JSON.stringify({
+          ...cacheData,
+          active: true,
+        }),
+      );
     }
   }
 };
 
-export const configUseFormTableFormatResult = (configFormatResult: TFormatResult) => {
-  formatResult = configFormatResult;
+export const configUseFormTableFormatResult = (formatResult: () => any) => {
+  _formatResult = formatResult;
 };

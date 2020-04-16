@@ -54,7 +54,7 @@ describe('useFormTable', () => {
     setFieldsValue(values: object) {
       this.fieldsValue = {
         ...this.fieldsValue,
-        ...values
+        ...values,
       };
     },
     resetFields() {
@@ -66,8 +66,7 @@ describe('useFormTable', () => {
     searchType = type;
   };
 
-  const setUp = ({ asyncFn: fn, options }: any) =>
-    renderHook(() => useFormTable(fn, options));
+  const setUp = ({ asyncFn: fn, options }: any) => renderHook(() => useFormTable(fn, options));
 
   let hook: RenderHookResult<
     { func: (...args: any[]) => Promise<{}>; opt: BaseOptions<any> },
@@ -258,5 +257,36 @@ describe('useFormTable', () => {
     expect(form.fieldsValue.name).toEqual('default name');
     expect(form.fieldsValue.phone).toBeUndefined();
     expect(form.fieldsValue.email).toBeUndefined();
+  });
+
+  it('should defaultParams work', async () => {
+    queryArgs = undefined;
+    act(() => {
+      hook = setUp({
+        asyncFn,
+        options: {
+          form,
+          defaultParams: [
+            {
+              current: 2,
+              pageSize: 10,
+            },
+            { name: 'hello', phone: '123' },
+          ],
+          defaultType: 'advance',
+        },
+      });
+    });
+    await hook.waitForNextUpdate();
+    const { search } = hook.result.current;
+    expect(hook.result.current.tableProps.loading).toEqual(false);
+    expect(queryArgs.current).toEqual(2);
+    expect(queryArgs.pageSize).toEqual(10);
+    expect(queryArgs.name).toEqual('hello');
+    expect(queryArgs.phone).toEqual('123');
+    expect(search).toBeDefined();
+    if (search) {
+      expect(search.type).toEqual('advance');
+    }
   });
 });

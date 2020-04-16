@@ -16,17 +16,17 @@ legacy: /antd/use-form-table
 
 ## 代码演示
 
-### Form 与 Table 联动
+### 基础使用
 
 <code src="./demo/demo1.tsx" />
 
-### 数据缓存
+### 带数据缓存
 
 <code src="./demo/demo2.tsx" />
 
 ## API
 
-useFormTable 基于 [useRequest](/zh-CN/async) 实现，所有的 [useRquest Pagination](/zh-CN/async?anchor=pagination#api-1) API 均可以直接使用。比如 `cacheKey`、`manual` 等等。
+useFormTable 基于 [useRequest](/zh-CN/async) 实现，所有的 [useRquest Pagination](/zh-CN/async?anchor=pagination#api-1) API 均可以直接使用。比如 `manual` 等等。
 
 useFormTable 额外增加了 `result.search` 和 `options.form`。
 

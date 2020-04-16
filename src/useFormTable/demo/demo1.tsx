@@ -1,9 +1,9 @@
 /**
- * title: Form and Table data binding
- * desc: useFormTable returns a search object after receiving a form instance.
+ * title:  Form 与 Table 联动
+ * desc: useFormTable 接收 form 实例后，会返回 search 对象。
  *
- * title.zh-CN: Form 与 Table 联动
- * desc.zh-CN: useFormTable 接收 form 实例后，会返回 search 对象。
+ * title.en-US: Form and Table data binding
+ * desc.en-US: useFormTable returns a search object after receiving a form instance.
  */
 
 import React from 'react';
@@ -31,8 +31,8 @@ const getTableData = ({ current, pageSize }: PaginatedParams[0], formData): Prom
   console.log(current, pageSize);
   console.log('formData', formData);
   return fetch(`https://randomuser.me/api?results=55&page=${current}&size=${pageSize}`)
-    .then((res) => res.json())
-    .then((res) => ({
+    .then(res => res.json())
+    .then(res => ({
       total: res.info.results,
       list: res.results,
     }));
@@ -108,7 +108,11 @@ export default () => {
     <div style={{ marginBottom: 16 }}>
       <Form form={form} style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <Form.Item name="gender">
-          <Select style={{ width: 120, marginRight: 16 }} onChange={submit}>
+          <Select
+            placeholder="-- 请选择 --"
+            style={{ width: 120, marginRight: 16 }}
+            onChange={submit}
+          >
             <Option value="">all</Option>
             <Option value="male">male</Option>
             <Option value="female">female</Option>

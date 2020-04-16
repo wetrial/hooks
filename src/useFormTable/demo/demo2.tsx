@@ -1,9 +1,9 @@
 /**
- * title: Data caching
- * desc: Form and Table data cache through cacheKey
+ * title: 数据缓存
+ * desc: 通过 cacheKey 可以实现 Form 和 Table 搜索状态缓存(切换到其他页面，其他页面通过`activeCache`来激活指定key的缓存，这样当切换回改页面的时候，搜索状态任然保留)。
  *
- * title.zh-CN: 数据缓存
- * desc.zh-CN: 通过 cacheKey 可以实现 Form 和 Table 搜索状态缓存(切换到其他页面，其他页面通过`activeCache`来激活指定key的缓存，这样当切换回改页面的时候，搜索状态任然保留)。
+ * title.en-US: Data caching
+ * desc.en-US: Form and Table data cache through cacheKey
  */
 
 import { useFormTable } from '@wetrial/hooks';
@@ -30,8 +30,8 @@ const getTableData = (pageInfo: PaginatedParams[0], formData): Promise<Result> =
   console.log(pageInfo, formData);
   const { current, pageSize } = pageInfo;
   return fetch(`https://randomuser.me/api?results=55&page=${current}&size=${pageSize}`)
-    .then((res) => res.json())
-    .then((res) => ({
+    .then(res => res.json())
+    .then(res => ({
       total: res.info.results,
       list: res.results,
     }));
@@ -68,10 +68,7 @@ export default () => {
     {
       title: 'gender',
       dataIndex: 'gender',
-      filters: [
-        { text: 'male', value: 'male' },
-        { text: 'female', value: 'female' },
-      ],
+      filters: [{ text: 'male', value: 'male' }, { text: 'female', value: 'female' }],
       filteredValue: filters.gender,
     },
   ];
@@ -112,7 +109,7 @@ export default () => {
         type="danger"
         onClick={() => {
           history.push({
-            pathname: '/other',
+            pathname: '/hooks/other/other',
             hash: '#useformtable-数据缓存',
           });
         }}
