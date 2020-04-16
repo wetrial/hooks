@@ -236,7 +236,7 @@ describe('useFormTable', () => {
     if (hook.result.current.search) {
       expect(hook.result.current.search.type).toEqual('simple');
     }
-    expect(hook.result.current.tableProps.pagination.current).toEqual(3);
+    expect(hook.result.current.tableProps.pagination.current).toEqual(1);
     expect(form.fieldsValue.name).toEqual('change name 2');
     expect(form.fieldsValue.phone).toEqual('13344556677');
     expect(form.fieldsValue.email).toEqual('x@qq.com');
