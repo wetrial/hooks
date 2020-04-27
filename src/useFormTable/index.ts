@@ -298,6 +298,6 @@ export const activeCache = (key: string) => {
   }
 };
 
-export const configUseFormTableFormatResult = (formatResult: () => any) => {
+export const configUseFormTableFormatResult = (formatResult: (data: any) => any) => {
   _formatResult = formatResult;
 };
