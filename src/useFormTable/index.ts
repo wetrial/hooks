@@ -51,7 +51,7 @@ export interface Result<Item> extends PaginatedResult<Item> {
 
 export interface BaseOptions<U> extends Omit<BasePaginatedOptions<U>, 'paginated'> {
   form?: UseAntdTableFormUtils;
-  defaultType: 'simple' | 'advance';
+  defaultType?: 'simple' | 'advance';
 }
 
 export interface OptionsWithFormat<R, Item, U>
