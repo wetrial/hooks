@@ -1,5 +1,9 @@
 import { configResponsive, useResponsive } from './useResponsive';
-import useFormTable, { activeCache, configUseFormTableFormatResult } from './useFormTable';
+import useFormTable, {
+  activeCache,
+  configUseFormTableFormatResult,
+  formatFormTableParams,
+} from './useFormTable';
 import { useSubscribe, PubSub } from './usePubSub';
 
 export {
@@ -10,4 +14,5 @@ export {
   PubSub,
   activeCache,
   configUseFormTableFormatResult,
+  formatFormTableParams,
 };

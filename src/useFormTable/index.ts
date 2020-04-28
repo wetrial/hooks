@@ -301,3 +301,16 @@ export const activeCache = (key: string) => {
 export const configUseFormTableFormatResult = (formatResult: (data: any) => any) => {
   _formatResult = formatResult;
 };
+
+/**
+ * 格式化请求参数 来符合abp后端
+ * @param param0 分页页码信息
+ * @param formData 搜索表单信息
+ */
+export const formatFormTableParams = ({ current, pageSize }: PaginatedParams[0], formData) => {
+  return {
+    SkipCount: (current - 1) * pageSize,
+    maxResultCount: pageSize,
+    ...formData,
+  };
+};
