@@ -307,9 +307,27 @@ export const configUseFormTableFormatResult = (formatResult: (data: any) => any)
  * @param param0 分页页码信息
  * @param formData 搜索表单信息
  */
-export const formatFormTableParams = ({ current, pageSize }: PaginatedParams[0], formData) => {
+export const formatFormTableParams = (
+  { current, pageSize, sorter }: PaginatedParams[0],
+  formData,
+) => {
+  let sortParam: any = {};
+  if (sorter && sorter.order) {
+    let sortName: string;
+    // 对象的情况下 列为数组
+    if (Array.isArray(sorter.field)) {
+      sortName = sorter.field[sorter.field.length - 1];
+    } else {
+      sortName = sorter.field;
+    }
+    sortParam = {
+      sorting: `${sortName} ${sorter.ascend === 'ascend' ? 'asc' : 'desc'}`,
+    };
+  }
+
   return {
-    SkipCount: (current - 1) * pageSize,
+    ...sortParam,
+    skipCount: (current - 1) * pageSize,
     maxResultCount: pageSize,
     ...formData,
   };
