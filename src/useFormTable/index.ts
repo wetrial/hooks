@@ -321,7 +321,7 @@ export const formatFormTableParams = (
       sortName = sorter.field;
     }
     sortParam = {
-      sorting: `${sortName} ${sorter.ascend === 'ascend' ? 'asc' : 'desc'}`,
+      sorting: `${sortName} ${sorter.order === 'ascend' ? 'asc' : 'desc'}`,
     };
   }
 
