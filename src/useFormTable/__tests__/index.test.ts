@@ -96,7 +96,7 @@ describe('useFormTable', () => {
     act(() => {
       hook = setUp({
         asyncFn,
-        options: { form, defaultPageSize: 5, cacheKey: 'tableId' },
+        options: { form, defaultPageSize: 5 },
       });
     });
     await hook.waitForNextUpdate();
@@ -237,9 +237,9 @@ describe('useFormTable', () => {
       expect(hook.result.current.search.type).toEqual('simple');
     }
     expect(hook.result.current.tableProps.pagination.current).toEqual(1);
-    expect(form.fieldsValue.name).toEqual('change name 2');
-    expect(form.fieldsValue.phone).toEqual('13344556677');
-    expect(form.fieldsValue.email).toEqual('x@qq.com');
+    expect(form.fieldsValue.name).toEqual('');
+    expect(form.fieldsValue.phone).toEqual('');
+    expect(form.fieldsValue.email).toEqual('');
 
     /* refresh */
     act(() => {
