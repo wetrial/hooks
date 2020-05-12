@@ -302,15 +302,10 @@ export const configUseFormTableFormatResult = (formatResult: (data: any) => any)
   _formatResult = formatResult;
 };
 
-/**
- * 格式化请求参数 来符合abp后端
- * @param param0 分页页码信息
- * @param formData 搜索表单信息
- */
-export const formatFormTableParams = (
+let _defaultFormatFormTablePrams = (
   { current, pageSize, sorter }: PaginatedParams[0],
-  formData,
-) => {
+  formData: any,
+): any => {
   let sortParam: any = {};
   if (sorter && sorter.order) {
     let sortName: string;
@@ -331,4 +326,21 @@ export const formatFormTableParams = (
     maxResultCount: pageSize,
     ...formData,
   };
+};
+
+/**
+ * 格式化请求参数 来符合abp后端
+ * @param param0 分页页码信息
+ * @param formData 搜索表单信息
+ */
+export const formatFormTableParams = _defaultFormatFormTablePrams;
+
+/**
+ * 格式化请求参数
+ * @param formatParams 默认格式化参数的方法
+ */
+export const configFormTableParamsFormat = (
+  formatParams: ({ current, pageSize, sorter }: PaginatedParams[0], formData: any) => any,
+) => {
+  _defaultFormatFormTablePrams = formatParams;
 };

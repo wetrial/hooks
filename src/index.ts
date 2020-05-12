@@ -1,8 +1,11 @@
+import { PaginatedParams } from '@umijs/use-request/lib/types';
+
 import { configResponsive, useResponsive } from './useResponsive';
 import useFormTable, {
   activeCache,
-  configUseFormTableFormatResult,
   formatFormTableParams,
+  configUseFormTableFormatResult,
+  configFormTableParamsFormat,
 } from './useFormTable';
 import { useSubscribe, PubSub } from './usePubSub';
 
@@ -13,6 +16,18 @@ export {
   useSubscribe,
   PubSub,
   activeCache,
-  configUseFormTableFormatResult,
   formatFormTableParams,
+};
+
+interface WetrialHooksProps {
+  /**
+   * 格式化后端返回的数据
+   */
+  formTableResultFormat: (data: any) => { total: number; list: any[] };
+  formTableParamsFormat: ({ current, pageSize, sorter }: PaginatedParams[0], formData: any) => any;
+}
+
+export const initHooks = (props: WetrialHooksProps) => {
+  configUseFormTableFormatResult(props.formTableResultFormat);
+  configFormTableParamsFormat(props.formTableParamsFormat);
 };
