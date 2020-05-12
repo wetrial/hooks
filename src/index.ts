@@ -23,11 +23,11 @@ interface WetrialHooksProps {
   /**
    * 格式化后端返回的数据
    */
-  formTableResultFormat: (data: any) => { total: number; list: any[] };
-  formTableParamsFormat: ({ current, pageSize, sorter }: PaginatedParams[0], formData: any) => any;
+  formTableResultFormat?: (data: any) => { total: number; list: any[] };
+  formTableParamsFormat?: ({ current, pageSize, sorter }: PaginatedParams[0], formData: any) => any;
 }
 
 export const initHooks = (props: WetrialHooksProps) => {
-  configUseFormTableFormatResult(props.formTableResultFormat);
-  configFormTableParamsFormat(props.formTableParamsFormat);
+  props.formTableResultFormat && configUseFormTableFormatResult(props.formTableResultFormat);
+  props.formTableParamsFormat && configFormTableParamsFormat(props.formTableParamsFormat);
 };
