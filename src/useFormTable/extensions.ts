@@ -1,4 +1,4 @@
-import { useSessionStorageState, useUnmount } from '@umijs/hooks';
+import { useSessionStorageState, useUnmount } from 'ahooks';
 
 export interface Store {
   [name: string]: any;

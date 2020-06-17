@@ -31,8 +31,8 @@ export default defineConfig({
   navs: [
     null,
     {
-      title: 'umi hooks',
-      path: 'https://hooks.umijs.org/zh-CN/hooks',
+      title: 'ahooks',
+      path: 'https://github.com/alibaba/hooks',
     },
   ],
   // scripts: [

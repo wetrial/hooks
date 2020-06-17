@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable no-underscore-dangle */
-import useRequest from '@umijs/use-request';
+import useRequest from '@ahooksjs/use-request';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import {
   CombineService,
@@ -10,8 +10,8 @@ import {
   PaginatedOptionsWithFormat,
   PaginatedFormatReturn,
   PaginatedResult,
-} from '@umijs/use-request/lib/types';
-import { useUpdateEffect, usePersistFn } from '@umijs/hooks';
+} from '@ahooksjs/use-request/lib/types';
+import { useUpdateEffect, usePersistFn } from 'ahooks';
 import useSessionStorageDestroyState from './extensions';
 
 type TFormatResult = (response: any) => any | undefined;
@@ -57,7 +57,7 @@ export interface BaseOptions<U> extends Omit<BasePaginatedOptions<U>, 'paginated
 export interface OptionsWithFormat<R, Item, U>
   extends Omit<PaginatedOptionsWithFormat<R, Item, U>, 'paginated'> {
   form?: UseAntdTableFormUtils;
-  defaultType: 'simple' | 'advance';
+  defaultType?: 'simple' | 'advance';
 }
 
 function useFormTable<R = any, Item = any, U extends Item = any>(

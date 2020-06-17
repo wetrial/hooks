@@ -49,8 +49,8 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
-    "@umijs/hooks": "^1.9.3",
     "@wetrial/core": "^3.1.6",
+    "ahooks": "^2.0.0",
     "antd": "^4.3.1",
     "classnames": "^2.2.6",
     "history": "^4.10.1",
@@ -60,16 +60,16 @@
     "react": "^16.13.1"
   },
   "peerDependencies": {
-    "@ant-design/icons": "4.x",
-    "@umijs/hooks": "1.x",
-    "@wetrial/core": "1.x",
-    "antd": "4.x",
-    "classnames": "2.x",
-    "history": "4.x",
-    "lodash": "4.x",
-    "path-to-regexp": "6.x",
-    "pubsub-js": "1.x",
-    "react": "16.x"
+    "@ant-design/icons": "*",
+    "@wetrial/core": "*",
+    "ahooks": "*",
+    "antd": "*",
+    "classnames": "*",
+    "history": "*",
+    "lodash": "*",
+    "path-to-regexp": "*",
+    "pubsub-js": "*",
+    "react": "*"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.2.1",

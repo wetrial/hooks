@@ -1,4 +1,4 @@
-import { PaginatedParams } from '@umijs/use-request/lib/types';
+import { PaginatedParams } from '@ahooksjs/use-request/lib/types';
 
 import { configResponsive, useResponsive } from './useResponsive';
 import useFormTable, {
