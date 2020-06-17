@@ -7,7 +7,7 @@ hero:
 
 # @wetrial/hooks
 
-基于 umi hooks 的 hooks 库
+基于 ahooks 的 hooks 库
 
 [![NPM version][image-1]][1] [![NPM downloads][image-2]][2]
 
@@ -24,7 +24,7 @@ hero:
 
 ## 📣 说明
 
-**你可以将 umi hooks 使用在任何地方，和任意组件库搭配使用。**
+**你可以将 ahooks 使用在任何地方，和任意组件库搭配使用。**
 虽然我们的代码示例都是基于 ant design 的，但是并不代表我们的 Hooks 只能和 ant design 配合使用。
 
 ## 📦 安装
