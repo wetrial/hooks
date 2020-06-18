@@ -63,7 +63,7 @@ $ npm start
 [image-1]: https://img.shields.io/npm/v/@wetrial/hooks.svg?style=flat
 [image-2]: https://img.shields.io/npm/dm/@wetrial/hooks.svg?style=flat
 
-基于 [https://github.com/umijs/hooks](ahooks)，建议实际使用过程中 同时安装 ahooks 库
+基于 [https://github.com/alibaba/hooks](ahooks)，建议实际使用过程中 同时安装 ahooks 库
 
 ## 按需加载
 
