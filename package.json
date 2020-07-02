@@ -27,6 +27,7 @@
     "help": "father help",
     "precommit": "father pre-commit",
     "build:doc": "dumi build",
+    "prerelease": "yarn version --prerelease && git push origin master && git push origin --tags",
     "patch": "yarn version --patch && git push origin master && git push origin --tags",
     "minor": "yarn version --minor && git push origin master && git push origin --tags",
     "major": "yarn version --major && git push origin master && git push origin --tags",
