@@ -1,6 +1,7 @@
 import { PaginatedParams } from '@ahooksjs/use-request/lib/types';
 
 import { configResponsive, useResponsive } from './useResponsive';
+import useTableColumnStateMapStorage from './useTableColumnStateMapStorage';
 import useFormTable, {
   activeCache,
   formatFormTableParams,
@@ -12,6 +13,7 @@ import { useSubscribe, PubSub } from './usePubSub';
 export {
   useResponsive,
   configResponsive,
+  useTableColumnStateMapStorage,
   useFormTable,
   useSubscribe,
   PubSub,
