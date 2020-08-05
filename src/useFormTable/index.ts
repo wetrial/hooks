@@ -118,17 +118,6 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
     if (!form) {
       return {};
     }
-    // antd 3
-    if (form.getFieldInstance) {
-      const tempAllFiledsValue = form.getFieldsValue();
-      const filterFiledsValue: Store = {};
-      Object.keys(tempAllFiledsValue).forEach((key: string) => {
-        if (form.getFieldInstance ? form.getFieldInstance(key) : true) {
-          filterFiledsValue[key] = tempAllFiledsValue[key];
-        }
-      });
-      return filterFiledsValue;
-    }
     // antd 4
     return form.getFieldsValue(null, () => true);
   }, [form]);
@@ -197,7 +186,7 @@ function useFormTable<R = any, Item = any, U extends Item = any>(
 
         run(
           {
-            pageSize: options.defaultPageSize || 10,
+            // pageSize: options.defaultPageSize || 10,
             ...(params[0] || {}), // 防止 manual 情况下，第一次触发 submit，此时没有 params[0]
             current: 1,
           },
