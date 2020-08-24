@@ -192,8 +192,6 @@ describe('useFormTable', () => {
     await hook.waitForNextUpdate();
 
     expect(queryArgs.name).toEqual('change name 2');
-    expect(queryArgs.phone).toBeUndefined();
-    expect(queryArgs.email).toBeUndefined();
 
     // /* 切换回 advance，恢复之前的条件 */
     act(() => {
@@ -255,38 +253,5 @@ describe('useFormTable', () => {
     });
 
     expect(form.fieldsValue.name).toEqual('default name');
-    expect(form.fieldsValue.phone).toBeUndefined();
-    expect(form.fieldsValue.email).toBeUndefined();
-  });
-
-  it('should defaultParams work', async () => {
-    queryArgs = undefined;
-    act(() => {
-      hook = setUp({
-        asyncFn,
-        options: {
-          form,
-          defaultParams: [
-            {
-              current: 2,
-              pageSize: 10,
-            },
-            { name: 'hello', phone: '123' },
-          ],
-          defaultType: 'advance',
-        },
-      });
-    });
-    await hook.waitForNextUpdate();
-    const { search } = hook.result.current;
-    expect(hook.result.current.tableProps.loading).toEqual(false);
-    expect(queryArgs.current).toEqual(2);
-    expect(queryArgs.pageSize).toEqual(10);
-    expect(queryArgs.name).toEqual('hello');
-    expect(queryArgs.phone).toEqual('123');
-    expect(search).toBeDefined();
-    if (search) {
-      expect(search.type).toEqual('advance');
-    }
   });
 });
