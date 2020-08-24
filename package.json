@@ -61,16 +61,16 @@
     "react": "^16.13.1"
   },
   "peerDependencies": {
-    "@ant-design/icons": "^4.x",
-    "@wetrial/core": "^3.x",
-    "ahooks": "^2.x",
-    "antd": "^4.x",
-    "classnames": "^2.x",
-    "history": "^4.x",
-    "lodash": "^4.x",
-    "path-to-regexp": "^6.x",
-    "pubsub-js": "^1.x",
-    "react": "^16.x"
+    "@ant-design/icons": "@*",
+    "@wetrial/core": "@*",
+    "ahooks": "@*",
+    "antd": "@*",
+    "classnames": "@*",
+    "history": "@*",
+    "lodash": "@*",
+    "path-to-regexp": "@*",
+    "pubsub-js": "@*",
+    "react": "@*"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.4.1",
