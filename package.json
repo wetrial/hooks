@@ -69,7 +69,7 @@
     "history": "^4.x",
     "lodash": "^4.x",
     "path-to-regexp": "^6.x",
-    "pubsub-js": "*",
+    "pubsub-js": "^1.x",
     "react": "^16.x"
   },
   "devDependencies": {
