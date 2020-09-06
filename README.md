@@ -5,6 +5,11 @@ hero:
       link: /getting-started
 ---
 
+
+# 此仓库已废弃
+
+**重要：** 此仓库后续不再维护，也不再接受更多的特性更新。`wetrial/hooks` 将会迁移至 `wetrial/wetrials` 仓库进行后续的维护，访问 https://wetrial.github.io/wetrials/hooks/ajax 了解更多。此变更不影响继续使用 `@wetrial/hooks` 这个 npm 包名安装使用此组件。
+
 # @wetrial/hooks
 
 基于 ahooks 的 hooks 库
